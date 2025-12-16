@@ -1,0 +1,90 @@
+[
+    {
+        "category": "Frontend",
+        "items": [
+            {
+                "name": "Next.js",
+                "icon": "SiNextdotjs"
+            },
+            {
+                "name": "React",
+                "icon": "FaReact"
+            },
+            {
+                "name": "TypeScript",
+                "icon": "SiTypescript"
+            },
+            {
+                "name": "HTML5",
+                "icon": "FaHtml5"
+            },
+            {
+                "name": "CSS3",
+                "icon": "FaCss3Alt"
+            }
+        ]
+    },
+    {
+        "category": "Backend",
+        "items": [
+            {
+                "name": "Node.js",
+                "icon": "FaNodeJs"
+            },
+            {
+                "name": "Python",
+                "icon": "FaPython"
+            },
+            {
+                "name": "Java",
+                "icon": "FaJava"
+            },
+            {
+                "name": "Go",
+                "icon": "FaGolang"
+            }
+        ]
+    },
+    {
+        "category": "Database",
+        "items": [
+            {
+                "name": "PostgreSQL",
+                "icon": "SiPostgresql"
+            },
+            {
+                "name": "MongoDB",
+                "icon": "SiMongodb"
+            },
+            {
+                "name": "MySQL",
+                "icon": "SiMysql"
+            },
+            {
+                "name": "Redis",
+                "icon": "SiRedis"
+            }
+        ]
+    },
+    {
+        "category": "Cloud & Tools",
+        "items": [
+            {
+                "name": "AWS",
+                "icon": "FaAws"
+            },
+            {
+                "name": "Docker",
+                "icon": "FaDocker"
+            },
+            {
+                "name": "Git",
+                "icon": "FaGitAlt"
+            },
+            {
+                "name": "Linux",
+                "icon": "FaLinux"
+            }
+        ]
+    }
+]

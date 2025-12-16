@@ -1,0 +1,29 @@
+import { ReactNode } from 'react';
+import * as Icons from 'react-icons/fa';
+
+interface CardProps {
+    title: string;
+    description: string;
+    icon?: string;
+    children?: ReactNode;
+    className?: string;
+}
+
+export default function Card({ title, description, icon, children, className = '' }: CardProps) {
+    // Dynamic Icon Rendering
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const IconComponent = icon ? (Icons as any)[icon] : null;
+
+    return (
+        <div className={`card ${className}`}>
+            {IconComponent && (
+                <div className="card-icon">
+                    <IconComponent />
+                </div>
+            )}
+            <h3 className="card-title">{title}</h3>
+            <p className="card-text">{description}</p>
+            {children}
+        </div>
+    );
+}

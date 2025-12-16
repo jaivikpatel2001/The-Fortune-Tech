@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Sarah Johnson",
+        "role": "CTO, TechCorp",
+        "content": "The Fortune Tech transformed our digital infrastructure. Their expertise in cloud migration saved us 40% in operational costs.",
+        "avatar": "/images/avatars/sarah.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Michael Chen",
+        "role": "Founder, StartUp Inc",
+        "content": "Exceptional work on our MVP. They delivered ahead of schedule and the code quality was top-notch. Highly recommended!",
+        "avatar": "/images/avatars/michael.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Emily Davis",
+        "role": "Director of Marketing, Growth Ltd",
+        "content": "Our new website looks stunning and performs perfectly. We've seen a 200% increase in lead generation since launch.",
+        "avatar": "/images/avatars/emily.jpg"
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "id": "web-dev",
+        "title": "Web Development",
+        "description": "Custom websites and web applications built with modern frameworks like Next.js and React.",
+        "icon": "FaCode",
+        "features": [
+            "Responsive Design",
+            "SEO Optimization",
+            "High Performance"
+        ],
+        "benefits": [
+            "Increased Reach",
+            "Better Conversion",
+            "Valid Semantic Markup"
+        ]
+    },
+    {
+        "id": "mobile-app",
+        "title": "Mobile App Development",
+        "description": "Native and Cross-platform mobile applications for iOS and Android.",
+        "icon": "FaMobileAlt",
+        "features": [
+            "React Native / Flutter",
+            "Intuitive UI/UX",
+            "Offline Capabilities"
+        ],
+        "benefits": [
+            "Broader Audience",
+            "Direct Marketing Channel",
+            "Brand Loyalty"
+        ]
+    },
+    {
+        "id": "ui-ux",
+        "title": "UI/UX Design",
+        "description": "User-centric design that drives engagement and delight.",
+        "icon": "FaPaintBrush",
+        "features": [
+            "User Research",
+            "Wireframing & Prototyping",
+            "Interactive Mockups"
+        ],
+        "benefits": [
+            "Higher user satisfaction",
+            "Lower bounce rates",
+            "Stronger brand identity"
+        ]
+    },
+    {
+        "id": "consulting",
+        "title": "IT Consulting",
+        "description": "Strategic advice to align your technology with business goals.",
+        "icon": "FaLightbulb",
+        "features": [
+            "Digital Transformation",
+            "Tech Stack Audit",
+            "Process Optimization"
+        ],
+        "benefits": [
+            "Reduced Costs",
+            "Improved Efficiency",
+            "Future-proof Technology"
+        ]
+    },
+    {
+        "id": "cloud-devops",
+        "title": "Cloud & DevOps",
+        "description": "Scalable cloud infrastructure and automated deployment pipelines.",
+        "icon": "FaCloud",
+        "features": [
+            "AWS / Azure / GCP",
+            "CI/CD Pipelines",
+            "Docker & Kubernetes"
+        ],
+        "benefits": [
+            "Scalability",
+            "Reliability",
+            "Faster Time-to-Market"
+        ]
+    },
+    {
+        "id": "maintenance",
+        "title": "Maintenance & Support",
+        "description": "Ongoing protection and updates for your digital assets.",
+        "icon": "FaTools",
+        "features": [
+            "24/7 Monitoring",
+            "Security Updates",
+            "Performance Tuning"
+        ],
+        "benefits": [
+            "Peace of Mind",
+            "Reduced Downtime",
+            "Always Up-to-Date"
+        ]
+    }
+]

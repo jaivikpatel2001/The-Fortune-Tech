@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "title": "FinTech Analytics Platform",
+        "category": "Web Development",
+        "description": "A comprehensive financial dashboard for real-time market analysis and portfolio management with AI-powered insights.",
+        "tech": [
+            "Next.js",
+            "TypeScript",
+            "Python",
+            "AWS"
+        ],
+        "image": "/images/portfolio/fintech.png"
+    },
+    {
+        "id": 2,
+        "title": "E-Commerce Mobile App",
+        "category": "Mobile App",
+        "description": "Cross-platform mobile application for a leading fashion retailer with AR try-on features and seamless checkout.",
+        "tech": [
+            "React Native",
+            "Node.js",
+            "Stripe"
+        ],
+        "image": "/images/portfolio/ecommerce.png"
+    },
+    {
+        "id": 3,
+        "title": "Healthcare Portal",
+        "category": "Web Development",
+        "description": "Secure patient portal for appointment scheduling, medical records, and telemedicine consultations.",
+        "tech": [
+            "React",
+            "Firebase",
+            "HIPAA"
+        ],
+        "image": "/images/portfolio/healthcare.png"
+    },
+    {
+        "id": 4,
+        "title": "SaaS Dashboard",
+        "category": "UI/UX Design",
+        "description": "Complete redesign of enterprise SaaS platform improving user engagement by 200%.",
+        "tech": [
+            "Figma",
+            "React",
+            "D3.js"
+        ],
+        "image": "/images/portfolio/fintech.png"
+    }
+]
