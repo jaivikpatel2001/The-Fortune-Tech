@@ -32,21 +32,6 @@ export default function Hero() {
               View Our Work
             </Button>
           </div>
-
-          <div className="hero-stats">
-            <div className="stat-item">
-              <div className="stat-value">150+</div>
-              <div className="stat-label">Projects Delivered</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">50+</div>
-              <div className="stat-label">Happy Clients</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">8+</div>
-              <div className="stat-label">Years Experience</div>
-            </div>
-          </div>
         </div>
 
         <div className="hero-visual">
