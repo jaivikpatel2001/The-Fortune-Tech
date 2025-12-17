@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import * as Icons from 'react-icons/fa';
+import { getIcon } from '../../lib/icons';
 
 interface CardProps {
     title: string;
@@ -10,9 +10,8 @@ interface CardProps {
 }
 
 export default function Card({ title, description, icon, children, className = '' }: CardProps) {
-    // Dynamic Icon Rendering
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const IconComponent = icon ? (Icons as any)[icon] : null;
+    // Dynamic Icon Rendering using shared utility
+    const IconComponent = icon ? getIcon(icon) : null;
 
     return (
         <div className={`card ${className}`}>

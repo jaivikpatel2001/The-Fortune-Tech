@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import PageHeader from '../../../components/ui/PageHeader';
 import Button from '../../../components/ui/Button';
 import serviceData from '../../../data/services.json';
-import * as FaIcons from 'react-icons/fa';
+import { getIcon } from '../../../lib/icons';
 import {
     FaArrowLeft,
     FaArrowRight,
@@ -44,12 +44,6 @@ interface Service {
         metaDescription: string;
     };
 }
-
-// Helper to resolve icon from string name
-const getIcon = (iconName: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (FaIcons as any)[iconName];
-};
 
 export default function ServiceDetailPage() {
     const params = useParams();
