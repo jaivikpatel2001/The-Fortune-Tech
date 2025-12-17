@@ -1,35 +1,32 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes, FaSun, FaMoon, FaUser, FaUserPlus } from 'react-icons/fa';
 import { useTheme } from '../../contexts/ThemeContext';
 import websiteConfig from '../../data/website-config.json';
+import { useScrolled } from '../../lib/hooks';
 
-// Transform navigation config to nav links format
+// Extract nav links at module level - static data that doesn't change
 const navLinks = websiteConfig.navigation.main.map(item => ({
     name: item.label,
     href: item.href
 }));
 
+// Site config extracted once
+const { site } = websiteConfig;
+
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const scrolled = useScrolled(20);
     const pathname = usePathname();
     const { theme, toggleTheme } = useTheme();
-    const { site } = websiteConfig;
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const toggleMenu = () => setIsOpen(!isOpen);
+    // Memoized toggle function to prevent unnecessary re-renders
+    const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
+    const closeMenu = useCallback(() => setIsOpen(false), []);
 
     // Don't show navbar on admin pages
     if (pathname?.startsWith('/admin')) {
@@ -39,7 +36,7 @@ export default function Navbar() {
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
-                <Link href="/" className="nav-logo" onClick={() => setIsOpen(false)}>
+                <Link href="/" className="nav-logo" onClick={closeMenu}>
                     <Image
                         src={site.logo}
                         alt={`${site.name} Logo`}
@@ -111,17 +108,17 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 className={`mobile-nav-link ${pathname === link.href ? 'active' : ''}`}
-                                onClick={() => setIsOpen(false)}
+                                onClick={closeMenu}
                             >
                                 {link.name}
                             </Link>
                         ))}
                         <div className="mobile-auth-buttons">
-                            <Link href="/login" className="btn btn-outline mobile-auth-btn" onClick={() => setIsOpen(false)}>
+                            <Link href="/login" className="btn btn-outline mobile-auth-btn" onClick={closeMenu}>
                                 <FaUser size={14} />
                                 <span>Login</span>
                             </Link>
-                            <Link href="/signup" className="btn btn-primary mobile-auth-btn" onClick={() => setIsOpen(false)}>
+                            <Link href="/signup" className="btn btn-primary mobile-auth-btn" onClick={closeMenu}>
                                 <FaUserPlus size={14} />
                                 <span>Sign Up</span>
                             </Link>

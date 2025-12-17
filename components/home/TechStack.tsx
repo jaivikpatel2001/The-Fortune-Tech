@@ -3,13 +3,9 @@
 import { useState } from 'react';
 import SectionTitle from '../ui/SectionTitle';
 import technologiesData from '../../data/technologies.json';
-import * as FaIcons from 'react-icons/fa';
-import * as SiIcons from 'react-icons/si';
+import { getIcon } from '../../lib/icons';
 import { FaCode, FaServer, FaDatabase, FaCloud, FaArrowRight, FaStar } from 'react-icons/fa';
 import Link from 'next/link';
-
-// Combined icons
-const AllIcons = { ...FaIcons, ...SiIcons };
 
 interface TechItem {
   name: string;
@@ -103,8 +99,7 @@ export default function TechStack() {
             return (
               <div key={index} className="home-tech-grid-new">
                 {category.items.map((tech, idx) => {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const Icon = (AllIcons as any)[tech.icon];
+                  const Icon = getIcon(tech.icon);
 
                   return (
                     <div

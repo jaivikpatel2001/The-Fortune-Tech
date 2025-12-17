@@ -1,19 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { memo } from 'react';
 import { FaRocket, FaUsers, FaAward, FaCode, FaGlobe } from 'react-icons/fa';
 import websiteConfig from '../../data/website-config.json';
+import { useCountUp, useIntersectionObserver } from '../../lib/hooks';
 
-// Map stat keys to icons
-const iconMap: { [key: string]: React.ComponentType } = {
-    projectsDelivered: FaRocket,
-    happyClients: FaUsers,
-    yearsExperience: FaAward,
-    teamMembers: FaCode,
-};
-
-// Transform stats from config to array format
-const getStatsArray = () => {
+// Transform stats from config to array format - extracted outside component for efficiency
+const statsArray = (() => {
     const { stats } = websiteConfig;
     return [
         {
@@ -49,42 +42,21 @@ const getStatsArray = () => {
             description: 'Talented professionals',
         },
     ];
-};
+})();
 
-type StatItem = ReturnType<typeof getStatsArray>[0];
+type StatItem = (typeof statsArray)[0];
 
-// Animated counter hook
-function useCountUp(end: number, duration: number = 2000, startCounting: boolean = false) {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        if (!startCounting) return;
-
-        let startTime: number;
-        let animationFrame: number;
-
-        const animate = (timestamp: number) => {
-            if (!startTime) startTime = timestamp;
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-
-            // Easing function for smooth animation
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            setCount(Math.floor(easeOutQuart * end));
-
-            if (progress < 1) {
-                animationFrame = requestAnimationFrame(animate);
-            }
-        };
-
-        animationFrame = requestAnimationFrame(animate);
-
-        return () => cancelAnimationFrame(animationFrame);
-    }, [end, duration, startCounting]);
-
-    return count;
+interface StatCardProps {
+    stat: StatItem;
+    index: number;
+    isVisible: boolean;
 }
 
-function StatCard({ stat, index, isVisible }: { stat: StatItem; index: number; isVisible: boolean }) {
+/**
+ * StatCard - Memoized for performance during counting animation
+ * React.memo prevents unnecessary re-renders of individual cards
+ */
+const StatCard = memo(function StatCard({ stat, index, isVisible }: StatCardProps) {
     const count = useCountUp(stat.value, 2000, isVisible);
     const Icon = stat.icon;
 
@@ -106,33 +78,13 @@ function StatCard({ stat, index, isVisible }: { stat: StatItem; index: number; i
             <div className="stats-card-glow" />
         </div>
     );
-}
+});
 
 export default function Stats() {
-    const sectionRef = useRef<HTMLElement>(null);
-    const [isVisible, setIsVisible] = useState(false);
-    const stats = getStatsArray();
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.2 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
+    const { ref, isVisible } = useIntersectionObserver(0.2, true);
 
     return (
-        <section ref={sectionRef} className="stats-section section ">
+        <section ref={ref as React.RefObject<HTMLElement>} className="stats-section section ">
             <div className="stats-bg-decoration">
                 <div className="stats-bg-circle stats-bg-circle-1" />
                 <div className="stats-bg-circle stats-bg-circle-2" />
@@ -150,7 +102,7 @@ export default function Stats() {
                 </div>
 
                 <div className={`stats-grid ${isVisible ? 'visible' : ''}`}>
-                    {stats.map((stat, index) => (
+                    {statsArray.map((stat, index) => (
                         <StatCard key={stat.key} stat={stat} index={index} isVisible={isVisible} />
                     ))}
                 </div>
@@ -165,3 +117,4 @@ export default function Stats() {
         </section>
     );
 }
+

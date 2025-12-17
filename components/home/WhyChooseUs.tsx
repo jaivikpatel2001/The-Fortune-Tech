@@ -1,18 +1,11 @@
 import SectionTitle from '../ui/SectionTitle';
-import * as FaIcons from 'react-icons/fa';
-import * as SiIcons from 'react-icons/si';
 import websiteConfig from '../../data/website-config.json';
+import { getIcon } from '../../lib/icons';
 
-// Helper to resolve icon from string name
-const getIcon = (iconName: string) => {
-    const icons = { ...FaIcons, ...SiIcons };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (icons as any)[iconName];
-};
+// Extract config at module level - static data
+const { whyChooseUs } = websiteConfig;
 
 export default function WhyChooseUs() {
-    const { whyChooseUs } = websiteConfig;
-
     return (
         <section className="section choose-us-section">
             <div className="container">
@@ -36,3 +29,4 @@ export default function WhyChooseUs() {
         </section>
     );
 }
+
