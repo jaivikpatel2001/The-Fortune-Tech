@@ -5,11 +5,12 @@ import {
     FaUsers, FaDollarSign, FaShoppingCart, FaChartLine,
     FaArrowUp, FaArrowDown, FaUser, FaShoppingBag, FaEnvelope, FaExclamationTriangle, FaChartArea
 } from 'react-icons/fa';
+import usersData from '../../data/users.json';
 
 const stats = [
     {
         label: 'Total Users',
-        value: '12,345',
+        value: usersData.metadata.totalUsers.toString(),
         change: '+12.5%',
         positive: true,
         icon: FaUsers,
@@ -41,13 +42,32 @@ const stats = [
     },
 ];
 
-const recentUsers = [
-    { id: 1, name: 'Sarah Johnson', email: 'sarah@example.com', status: 'active', role: 'Customer', joined: '2 hours ago' },
-    { id: 2, name: 'Michael Chen', email: 'michael@example.com', status: 'active', role: 'Customer', joined: '5 hours ago' },
-    { id: 3, name: 'Emily Davis', email: 'emily@example.com', status: 'pending', role: 'Customer', joined: '1 day ago' },
-    { id: 4, name: 'James Wilson', email: 'james@example.com', status: 'active', role: 'Admin', joined: '2 days ago' },
-    { id: 5, name: 'Lisa Anderson', email: 'lisa@example.com', status: 'inactive', role: 'Customer', joined: '3 days ago' },
-];
+// Get recent users from users.json
+const recentUsers = usersData.users.slice(0, 5).map(user => {
+    // Calculate relative time from lastLogin
+    const getRelativeTime = (dateString: string | null) => {
+        if (!dateString) return 'Never';
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffMs = now.getTime() - date.getTime();
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffDays = Math.floor(diffHours / 24);
+
+        if (diffHours < 1) return 'Just now';
+        if (diffHours < 24) return `${diffHours} hours ago`;
+        if (diffDays === 1) return '1 day ago';
+        return `${diffDays} days ago`;
+    };
+
+    return {
+        id: user.id,
+        name: user.displayName,
+        email: user.email,
+        status: user.status,
+        role: usersData.roles[user.role as keyof typeof usersData.roles]?.name || user.role,
+        joined: getRelativeTime(user.security.lastLogin)
+    };
+});
 
 const recentActivity = [
     { type: 'user', icon: FaUser, text: '<strong>John Doe</strong> registered a new account', time: '2 minutes ago' },
@@ -143,7 +163,7 @@ export default function AdminDashboard() {
                                 <th>User</th>
                                 <th>Status</th>
                                 <th>Role</th>
-                                <th>Joined</th>
+                                <th>Last Active</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -184,7 +204,7 @@ export default function AdminDashboard() {
                     </table>
                 </div>
                 <div className="admin-pagination">
-                    <span className="pagination-info">Showing 1-5 of 24 users</span>
+                    <span className="pagination-info">Showing 1-{recentUsers.length} of {usersData.metadata.totalUsers} users</span>
                     <div className="pagination-buttons">
                         <button className="pagination-btn" disabled>&lt;</button>
                         <button className="pagination-btn active">1</button>

@@ -4,19 +4,24 @@ import { useState } from 'react';
 import PageHeader from '../../components/ui/PageHeader';
 import Button from '../../components/ui/Button';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import websiteConfig from '../../data/website-config.json';
 
 export default function ContactPage() {
+    const { company, contact } = websiteConfig;
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         company: '',
+        service: '',
+        budget: '',
         message: ''
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
@@ -30,15 +35,26 @@ export default function ContactPage() {
 
         console.log('Form Submitted:', formData);
         alert('Thank you for reaching out! We\'ll get back to you within 24 hours.');
-        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' });
         setIsSubmitting(false);
     };
+
+    // Get service options from config
+    const serviceField = contact.form.fields.find(f => f.name === 'service');
+    const serviceOptions = serviceField?.options || [];
+
+    // Get budget options from config
+    const budgetField = contact.form.fields.find(f => f.name === 'budget');
+    const budgetOptions = budgetField?.options || [];
+
+    // Format address
+    const fullAddress = `${company.address.street}, ${company.address.city}, ${company.address.state} ${company.address.zipCode}`;
 
     return (
         <>
             <PageHeader
-                title="Let's Work Together"
-                subtitle="Have a project in mind? We'd love to hear about it. Get in touch and let's create something amazing."
+                title={contact.title}
+                subtitle={contact.subtitle}
             />
 
             <section className="section">
@@ -57,21 +73,21 @@ export default function ContactPage() {
                                     <div className="info-icon"><FaMapMarkerAlt /></div>
                                     <div>
                                         <h4 className="item-title">Visit Our Office</h4>
-                                        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>123 Tech Avenue, Silicon Valley, CA 94000</p>
+                                        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>{fullAddress}</p>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <div className="info-icon"><FaEnvelope /></div>
                                     <div>
                                         <h4 className="item-title">Email Us</h4>
-                                        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>hello@fortunetech.com</p>
+                                        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>{company.contact.email}</p>
                                     </div>
                                 </div>
                                 <div className="info-item">
                                     <div className="info-icon"><FaPhone /></div>
                                     <div>
                                         <h4 className="item-title">Call Us</h4>
-                                        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>+1 (555) 123-4567</p>
+                                        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>{company.contact.phone}</p>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +95,7 @@ export default function ContactPage() {
                             {/* Map Embed */}
                             <div className="map-container">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d188820.85663266823!2d-71.13483393259708!3d42.31424750303242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3652d0d3d311b%3A0x787cbf240162e8a0!2sBoston%2C%20MA%2C%20USA!5e0!3m2!1sen!2sin!4v1765907157469!5m2!1sen!2sin"
+                                    src={`https://www.google.com/maps?q=${company.address.coordinates.lat},${company.address.coordinates.lng}&z=14&output=embed`}
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
@@ -150,6 +166,40 @@ export default function ContactPage() {
                                     </div>
                                 </div>
 
+                                <div className="grid grid-2" style={{ gap: '1rem' }}>
+                                    <div className="form-group">
+                                        <label htmlFor="service" className="form-label">Service Interested In *</label>
+                                        <select
+                                            id="service"
+                                            name="service"
+                                            className="form-input"
+                                            value={formData.service}
+                                            onChange={handleChange}
+                                            required
+                                        >
+                                            <option value="">Select a service</option>
+                                            {serviceOptions.map((option, index) => (
+                                                <option key={index} value={option}>{option}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="budget" className="form-label">Budget Range</label>
+                                        <select
+                                            id="budget"
+                                            name="budget"
+                                            className="form-input"
+                                            value={formData.budget}
+                                            onChange={handleChange}
+                                        >
+                                            <option value="">Select budget</option>
+                                            {budgetOptions.map((option, index) => (
+                                                <option key={index} value={option}>{option}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div className="form-group">
                                     <label htmlFor="message" className="form-label">Project Details *</label>
                                     <textarea
@@ -164,7 +214,7 @@ export default function ContactPage() {
                                 </div>
 
                                 <Button type="submit" variant="primary" className="w-full" style={{ width: '100%' }}>
-                                    {isSubmitting ? 'Sending...' : (<span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FaPaperPlane /> Send Message</span>)}
+                                    {isSubmitting ? 'Sending...' : (<span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><FaPaperPlane /> {contact.form.submitButton}</span>)}
                                 </Button>
                             </form>
                         </div>

@@ -1,0 +1,446 @@
+{
+    "users": [
+        {
+            "id": "usr_001",
+            "email": "admin@fortunetech.com",
+            "password": "$2b$10$hashedpassword1",
+            "firstName": "Admin",
+            "lastName": "User",
+            "displayName": "Admin User",
+            "avatar": "/images/avatars/admin.jpg",
+            "role": "super_admin",
+            "status": "active",
+            "permissions": [
+                "users:read",
+                "users:write",
+                "users:delete",
+                "products:read",
+                "products:write",
+                "products:delete",
+                "analytics:read",
+                "messages:read",
+                "messages:write",
+                "messages:delete",
+                "settings:read",
+                "settings:write"
+            ],
+            "profile": {
+                "bio": "System Administrator for Fortune Tech",
+                "phone": "+1 (555) 123-4567",
+                "location": "Silicon Valley, CA",
+                "department": "Administration",
+                "position": "System Administrator"
+            },
+            "preferences": {
+                "theme": "light",
+                "notifications": {
+                    "email": true,
+                    "push": true,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": true,
+                "lastLogin": "2025-12-17T04:30:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-11-01T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-01-15T10:00:00Z",
+                "updatedAt": "2025-12-17T04:30:00Z",
+                "createdBy": "system",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_002",
+            "email": "jaivik@fortunetech.com",
+            "password": "$2b$10$hashedpassword2",
+            "firstName": "Jaivik",
+            "lastName": "Patel",
+            "displayName": "Jaivik Patel",
+            "avatar": "/images/avatars/jaivik.jpg",
+            "role": "admin",
+            "status": "active",
+            "permissions": [
+                "users:read",
+                "users:write",
+                "products:read",
+                "products:write",
+                "products:delete",
+                "analytics:read",
+                "messages:read",
+                "messages:write",
+                "settings:read"
+            ],
+            "profile": {
+                "bio": "Founder & Lead Developer at Fortune Tech",
+                "phone": "+91 98765 43210",
+                "location": "India",
+                "department": "Engineering",
+                "position": "Founder & CTO"
+            },
+            "preferences": {
+                "theme": "dark",
+                "notifications": {
+                    "email": true,
+                    "push": true,
+                    "sms": true
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": true,
+                "lastLogin": "2025-12-17T05:00:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-10-15T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-01-15T10:00:00Z",
+                "updatedAt": "2025-12-17T05:00:00Z",
+                "createdBy": "system",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_003",
+            "email": "sarah.johnson@techcorp.com",
+            "password": "$2b$10$hashedpassword3",
+            "firstName": "Sarah",
+            "lastName": "Johnson",
+            "displayName": "Sarah Johnson",
+            "avatar": "/images/avatars/sarah.jpg",
+            "role": "client",
+            "status": "active",
+            "permissions": [
+                "products:read",
+                "messages:read",
+                "messages:write"
+            ],
+            "profile": {
+                "bio": "CTO at TechCorp - Cloud & DevOps Client",
+                "phone": "+1 (555) 234-5678",
+                "location": "USA",
+                "department": null,
+                "position": "CTO",
+                "company": "TechCorp"
+            },
+            "preferences": {
+                "theme": "light",
+                "notifications": {
+                    "email": true,
+                    "push": false,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": false,
+                "lastLogin": "2025-12-15T14:00:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-09-01T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-06-20T10:00:00Z",
+                "updatedAt": "2025-12-15T14:00:00Z",
+                "createdBy": "usr_002",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_004",
+            "email": "michael.chen@startupinc.com",
+            "password": "$2b$10$hashedpassword4",
+            "firstName": "Michael",
+            "lastName": "Chen",
+            "displayName": "Michael Chen",
+            "avatar": "/images/avatars/michael.jpg",
+            "role": "client",
+            "status": "active",
+            "permissions": [
+                "products:read",
+                "messages:read",
+                "messages:write"
+            ],
+            "profile": {
+                "bio": "Founder & CEO at StartUp Inc - MVP Development Client",
+                "phone": "+1 (555) 345-6789",
+                "location": "USA",
+                "department": null,
+                "position": "Founder & CEO",
+                "company": "StartUp Inc"
+            },
+            "preferences": {
+                "theme": "dark",
+                "notifications": {
+                    "email": true,
+                    "push": true,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": true,
+                "lastLogin": "2025-12-16T09:30:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-08-15T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-08-10T10:00:00Z",
+                "updatedAt": "2025-12-16T09:30:00Z",
+                "createdBy": "usr_002",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_005",
+            "email": "emily.davis@growthltd.com",
+            "password": "$2b$10$hashedpassword5",
+            "firstName": "Emily",
+            "lastName": "Davis",
+            "displayName": "Emily Davis",
+            "avatar": "/images/avatars/emily.jpg",
+            "role": "client",
+            "status": "active",
+            "permissions": [
+                "products:read",
+                "messages:read",
+                "messages:write"
+            ],
+            "profile": {
+                "bio": "Director of Marketing at Growth Ltd - Website Redesign Client",
+                "phone": "+44 20 1234 5678",
+                "location": "UK",
+                "department": null,
+                "position": "Director of Marketing",
+                "company": "Growth Ltd"
+            },
+            "preferences": {
+                "theme": "light",
+                "notifications": {
+                    "email": true,
+                    "push": false,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": false,
+                "lastLogin": "2025-12-10T11:00:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-07-20T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-09-05T10:00:00Z",
+                "updatedAt": "2025-12-10T11:00:00Z",
+                "createdBy": "usr_002",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_006",
+            "email": "james.wilson@example.com",
+            "password": "$2b$10$hashedpassword6",
+            "firstName": "James",
+            "lastName": "Wilson",
+            "displayName": "James Wilson",
+            "avatar": "/images/avatars/james.jpg",
+            "role": "editor",
+            "status": "active",
+            "permissions": [
+                "products:read",
+                "products:write",
+                "messages:read",
+                "messages:write"
+            ],
+            "profile": {
+                "bio": "Content Manager at Fortune Tech",
+                "phone": "+1 (555) 456-7890",
+                "location": "USA",
+                "department": "Marketing",
+                "position": "Content Manager"
+            },
+            "preferences": {
+                "theme": "light",
+                "notifications": {
+                    "email": true,
+                    "push": true,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": false,
+                "lastLogin": "2025-12-16T15:00:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-06-01T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-03-20T10:00:00Z",
+                "updatedAt": "2025-12-16T15:00:00Z",
+                "createdBy": "usr_001",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_007",
+            "email": "lisa.anderson@example.com",
+            "password": "$2b$10$hashedpassword7",
+            "firstName": "Lisa",
+            "lastName": "Anderson",
+            "displayName": "Lisa Anderson",
+            "avatar": "/images/avatars/lisa.jpg",
+            "role": "client",
+            "status": "inactive",
+            "permissions": [
+                "products:read",
+                "messages:read"
+            ],
+            "profile": {
+                "bio": "Former client - Project completed",
+                "phone": "+1 (555) 567-8901",
+                "location": "Canada",
+                "department": null,
+                "position": "Project Manager",
+                "company": "XYZ Corp"
+            },
+            "preferences": {
+                "theme": "light",
+                "notifications": {
+                    "email": false,
+                    "push": false,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": false,
+                "lastLogin": "2025-11-01T10:00:00Z",
+                "loginAttempts": 0,
+                "passwordChangedAt": "2025-05-10T00:00:00Z"
+            },
+            "metadata": {
+                "createdAt": "2024-04-15T10:00:00Z",
+                "updatedAt": "2025-11-01T10:00:00Z",
+                "createdBy": "usr_002",
+                "isVerified": true
+            }
+        },
+        {
+            "id": "usr_008",
+            "email": "john.doe@example.com",
+            "password": "$2b$10$hashedpassword8",
+            "firstName": "John",
+            "lastName": "Doe",
+            "displayName": "John Doe",
+            "avatar": null,
+            "role": "client",
+            "status": "pending",
+            "permissions": [
+                "products:read",
+                "messages:read",
+                "messages:write"
+            ],
+            "profile": {
+                "bio": "New potential client - Inquiry submitted",
+                "phone": "+1 (555) 678-9012",
+                "location": "USA",
+                "department": null,
+                "position": "Tech Lead",
+                "company": "New Client Corp"
+            },
+            "preferences": {
+                "theme": "light",
+                "notifications": {
+                    "email": true,
+                    "push": false,
+                    "sms": false
+                },
+                "language": "en"
+            },
+            "security": {
+                "twoFactorEnabled": false,
+                "lastLogin": null,
+                "loginAttempts": 0,
+                "passwordChangedAt": null
+            },
+            "metadata": {
+                "createdAt": "2025-12-17T04:00:00Z",
+                "updatedAt": "2025-12-17T04:00:00Z",
+                "createdBy": "system",
+                "isVerified": false
+            }
+        }
+    ],
+    "roles": {
+        "super_admin": {
+            "name": "Super Admin",
+            "description": "Full system access with all permissions",
+            "level": 100
+        },
+        "admin": {
+            "name": "Admin",
+            "description": "Administrative access to manage content and users",
+            "level": 80
+        },
+        "editor": {
+            "name": "Editor",
+            "description": "Can create and edit content",
+            "level": 50
+        },
+        "client": {
+            "name": "Client",
+            "description": "Client access to view projects and communicate",
+            "level": 20
+        },
+        "guest": {
+            "name": "Guest",
+            "description": "Limited read-only access",
+            "level": 10
+        }
+    },
+    "permissions": {
+        "users:read": "View user profiles and list",
+        "users:write": "Create and edit user accounts",
+        "users:delete": "Remove user accounts",
+        "products:read": "View products/services",
+        "products:write": "Create and edit products/services",
+        "products:delete": "Remove products/services",
+        "analytics:read": "View analytics and reports",
+        "messages:read": "View messages and inquiries",
+        "messages:write": "Send and respond to messages",
+        "messages:delete": "Delete messages",
+        "settings:read": "View system settings",
+        "settings:write": "Modify system settings"
+    },
+    "statuses": {
+        "active": {
+            "label": "Active",
+            "color": "#10B981",
+            "description": "User account is active and can access the system"
+        },
+        "inactive": {
+            "label": "Inactive",
+            "color": "#64748B",
+            "description": "User account is deactivated"
+        },
+        "pending": {
+            "label": "Pending",
+            "color": "#F59E0B",
+            "description": "User account is pending verification"
+        },
+        "suspended": {
+            "label": "Suspended",
+            "color": "#EF4444",
+            "description": "User account has been suspended"
+        }
+    },
+    "metadata": {
+        "totalUsers": 8,
+        "activeUsers": 6,
+        "pendingUsers": 1,
+        "inactiveUsers": 1,
+        "lastUpdated": "2025-12-17T10:00:00Z"
+    }
+}

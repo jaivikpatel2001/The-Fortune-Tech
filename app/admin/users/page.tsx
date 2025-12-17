@@ -3,17 +3,33 @@
 import { useState } from 'react';
 import AdminLayout from '../../../components/admin/AdminLayout';
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaFilter } from 'react-icons/fa';
+import usersJsonData from '../../../data/users.json';
 
-const usersData = [
-    { id: 1, name: 'Sarah Johnson', email: 'sarah@example.com', status: 'active', role: 'Customer', joined: 'Dec 10, 2024' },
-    { id: 2, name: 'Michael Chen', email: 'michael@example.com', status: 'active', role: 'Customer', joined: 'Dec 9, 2024' },
-    { id: 3, name: 'Emily Davis', email: 'emily@example.com', status: 'pending', role: 'Customer', joined: 'Dec 8, 2024' },
-    { id: 4, name: 'James Wilson', email: 'james@example.com', status: 'active', role: 'Admin', joined: 'Dec 5, 2024' },
-    { id: 5, name: 'Lisa Anderson', email: 'lisa@example.com', status: 'inactive', role: 'Customer', joined: 'Dec 3, 2024' },
-    { id: 6, name: 'Robert Brown', email: 'robert@example.com', status: 'active', role: 'Customer', joined: 'Dec 1, 2024' },
-    { id: 7, name: 'Jennifer Lee', email: 'jennifer@example.com', status: 'banned', role: 'Customer', joined: 'Nov 28, 2024' },
-    { id: 8, name: 'David Miller', email: 'david@example.com', status: 'active', role: 'Moderator', joined: 'Nov 25, 2024' },
-];
+// Transform users from JSON to display format
+const transformUsers = () => {
+    return usersJsonData.users.map(user => {
+        // Format date from createdAt
+        const formatDate = (dateString: string) => {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+        };
+
+        return {
+            id: user.id,
+            name: user.displayName,
+            email: user.email,
+            status: user.status,
+            role: usersJsonData.roles[user.role as keyof typeof usersJsonData.roles]?.name || user.role,
+            joined: formatDate(user.metadata.createdAt)
+        };
+    });
+};
+
+const usersData = transformUsers();
 
 export default function UsersPage() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -25,6 +41,9 @@ export default function UsersPage() {
         const matchesStatus = statusFilter === 'all' || user.status === statusFilter;
         return matchesSearch && matchesStatus;
     });
+
+    // Get status options from the JSON config
+    const statusOptions = Object.keys(usersJsonData.statuses);
 
     return (
         <AdminLayout pageTitle="Users">
@@ -58,10 +77,11 @@ export default function UsersPage() {
                             style={{ width: 'auto', padding: '0.75rem 1rem' }}
                         >
                             <option value="all">All Status</option>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                            <option value="pending">Pending</option>
-                            <option value="banned">Banned</option>
+                            {statusOptions.map(status => (
+                                <option key={status} value={status}>
+                                    {usersJsonData.statuses[status as keyof typeof usersJsonData.statuses].label}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
@@ -130,7 +150,7 @@ export default function UsersPage() {
                     </table>
                 </div>
                 <div className="admin-pagination">
-                    <span className="pagination-info">Showing 1-{filteredUsers.length} of {filteredUsers.length} users</span>
+                    <span className="pagination-info">Showing 1-{filteredUsers.length} of {usersJsonData.metadata.totalUsers} users</span>
                     <div className="pagination-buttons">
                         <button className="pagination-btn" disabled>&lt;</button>
                         <button className="pagination-btn active">1</button>

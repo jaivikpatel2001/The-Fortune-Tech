@@ -1,43 +1,44 @@
 import Image from 'next/image';
 import Button from '../ui/Button';
 import { FaArrowRight } from 'react-icons/fa';
+import websiteConfig from '../../data/website-config.json';
 
 export default function Hero() {
+  const { hero } = websiteConfig;
+
   return (
     <section className="hero-section">
       <div className="container hero-container">
         <div className="hero-content">
           <div className="hero-badge">
-            <span className="hero-badge-dot"></span>
-            Available for new projects
+            {hero.badge.showDot && <span className="hero-badge-dot"></span>}
+            {hero.badge.text}
           </div>
 
           <h1 className="hero-title">
-            We Build Digital
+            {hero.title.line1}
             <br />
-            <span className="highlight">Experiences</span> That Matter
+            <span className="highlight">{hero.title.highlight}</span> {hero.title.line2}
           </h1>
 
           <p className="hero-text">
-            Transform your business with cutting-edge technology solutions.
-            We craft premium web and mobile experiences that drive growth,
-            engage users, and deliver measurable results.
+            {hero.description}
           </p>
 
           <div className="hero-buttons">
-            <Button href="/contact" variant="primary">
-              Start Your Project <FaArrowRight />
+            <Button href={hero.cta.primary.href} variant="primary">
+              {hero.cta.primary.label} <FaArrowRight />
             </Button>
-            <Button href="/portfolio" variant="outline">
-              View Our Work
+            <Button href={hero.cta.secondary.href} variant="outline">
+              {hero.cta.secondary.label}
             </Button>
           </div>
         </div>
 
         <div className="hero-visual">
           <Image
-            src="/images/hero/hero.png"
-            alt="Modern tech team collaborating"
+            src={hero.image.src}
+            alt={hero.image.alt}
             fill
             priority
             sizes="(max-width: 768px) 100vw, 50vw"

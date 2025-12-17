@@ -1,38 +1,57 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { FaRocket, FaUsers, FaAward, FaClock, FaCode, FaGlobe } from 'react-icons/fa';
+import { FaRocket, FaUsers, FaAward, FaCode, FaGlobe } from 'react-icons/fa';
+import websiteConfig from '../../data/website-config.json';
 
-const stats = [
-    {
-        icon: FaRocket,
-        value: 150,
-        suffix: '+',
-        label: 'Projects Delivered',
-        description: 'Successfully completed',
-    },
-    {
-        icon: FaUsers,
-        value: 50,
-        suffix: '+',
-        label: 'Happy Clients',
-        description: 'Worldwide partnerships',
-    },
-    {
-        icon: FaAward,
-        value: 8,
-        suffix: '+',
-        label: 'Years Experience',
-        description: 'Industry expertise',
-    },
-    {
-        icon: FaCode,
-        value: 99,
-        suffix: '%',
-        label: 'Client Satisfaction',
-        description: 'Excellence delivered',
-    },
-];
+// Map stat keys to icons
+const iconMap: { [key: string]: React.ComponentType } = {
+    projectsDelivered: FaRocket,
+    happyClients: FaUsers,
+    yearsExperience: FaAward,
+    teamMembers: FaCode,
+};
+
+// Transform stats from config to array format
+const getStatsArray = () => {
+    const { stats } = websiteConfig;
+    return [
+        {
+            key: 'projectsDelivered',
+            icon: FaRocket,
+            value: stats.projectsDelivered.value,
+            suffix: stats.projectsDelivered.suffix,
+            label: stats.projectsDelivered.label,
+            description: 'Successfully completed',
+        },
+        {
+            key: 'happyClients',
+            icon: FaUsers,
+            value: stats.happyClients.value,
+            suffix: stats.happyClients.suffix,
+            label: stats.happyClients.label,
+            description: 'Worldwide partnerships',
+        },
+        {
+            key: 'yearsExperience',
+            icon: FaAward,
+            value: stats.yearsExperience.value,
+            suffix: stats.yearsExperience.suffix,
+            label: stats.yearsExperience.label,
+            description: 'Industry expertise',
+        },
+        {
+            key: 'teamMembers',
+            icon: FaCode,
+            value: stats.teamMembers.value,
+            suffix: stats.teamMembers.suffix,
+            label: stats.teamMembers.label,
+            description: 'Talented professionals',
+        },
+    ];
+};
+
+type StatItem = ReturnType<typeof getStatsArray>[0];
 
 // Animated counter hook
 function useCountUp(end: number, duration: number = 2000, startCounting: boolean = false) {
@@ -65,7 +84,7 @@ function useCountUp(end: number, duration: number = 2000, startCounting: boolean
     return count;
 }
 
-function StatCard({ stat, index, isVisible }: { stat: typeof stats[0]; index: number; isVisible: boolean }) {
+function StatCard({ stat, index, isVisible }: { stat: StatItem; index: number; isVisible: boolean }) {
     const count = useCountUp(stat.value, 2000, isVisible);
     const Icon = stat.icon;
 
@@ -92,6 +111,7 @@ function StatCard({ stat, index, isVisible }: { stat: typeof stats[0]; index: nu
 export default function Stats() {
     const sectionRef = useRef<HTMLElement>(null);
     const [isVisible, setIsVisible] = useState(false);
+    const stats = getStatsArray();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -131,7 +151,7 @@ export default function Stats() {
 
                 <div className={`stats-grid ${isVisible ? 'visible' : ''}`}>
                     {stats.map((stat, index) => (
-                        <StatCard key={index} stat={stat} index={index} isVisible={isVisible} />
+                        <StatCard key={stat.key} stat={stat} index={index} isVisible={isVisible} />
                     ))}
                 </div>
 

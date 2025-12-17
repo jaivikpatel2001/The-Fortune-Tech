@@ -6,21 +6,20 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { FaBars, FaTimes, FaSun, FaMoon, FaUser, FaUserPlus } from 'react-icons/fa';
 import { useTheme } from '../../contexts/ThemeContext';
+import websiteConfig from '../../data/website-config.json';
 
-const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Technologies', href: '/technologies' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Contact', href: '/contact' },
-];
+// Transform navigation config to nav links format
+const navLinks = websiteConfig.navigation.main.map(item => ({
+    name: item.label,
+    href: item.href
+}));
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
     const { theme, toggleTheme } = useTheme();
+    const { site } = websiteConfig;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,8 +41,8 @@ export default function Navbar() {
             <div className="container navbar-container">
                 <Link href="/" className="nav-logo" onClick={() => setIsOpen(false)}>
                     <Image
-                        src="/logo.png"
-                        alt="Fortune Tech Logo"
+                        src={site.logo}
+                        alt={`${site.name} Logo`}
                         width={150}
                         height={150}
                         className="nav-logo-img"

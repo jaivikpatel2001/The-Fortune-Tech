@@ -1,18 +1,20 @@
 import Button from '../ui/Button';
 import { FaRocket } from 'react-icons/fa';
+import websiteConfig from '../../data/website-config.json';
 
 export default function CTA() {
+  const { cta } = websiteConfig;
+
   return (
     <section className="cta-section">
       <div className="container">
         <div className="cta-content">
-          <h2 className="cta-title">Ready to Start Your Project?</h2>
+          <h2 className="cta-title">{cta.title}</h2>
           <p className="cta-text">
-            Let's build something extraordinary together. Schedule a free consultation
-            and discover how we can transform your ideas into reality.
+            {cta.description}
           </p>
-          <Button href="/contact" variant="primary">
-            <FaRocket /> Get Started Today
+          <Button href={cta.button.href} variant="primary">
+            <FaRocket /> {cta.button.label}
           </Button>
         </div>
       </div>
