@@ -4,7 +4,7 @@ import Link from 'next/link';
 import SectionTitle from '../ui/SectionTitle';
 import Button from '../ui/Button';
 import serviceData from '../../data/services.json';
-import * as FaIcons from 'react-icons/fa';
+import { getIcon } from '../../lib/icons';
 import { FaArrowRight, FaCheck } from 'react-icons/fa';
 
 interface Service {
@@ -30,17 +30,13 @@ interface Service {
     featured: boolean;
 }
 
-export default function Services() {
-    const services = serviceData as unknown as Service[];
-    // Show featured services first, then limit to 3
-    const displayedServices = services
-        .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
-        .slice(0, 3);
+// Pre-computed displayed services - sorted by featured and limited to 3
+// Computed once at module load time for efficiency
+const displayedServices = (serviceData as unknown as Service[])
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+    .slice(0, 3);
 
-    const getIcon = (iconName: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return (FaIcons as any)[iconName];
-    };
+export default function Services() {
 
     return (
         <section className="section services-section">

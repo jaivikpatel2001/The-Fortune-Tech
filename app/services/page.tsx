@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '../../components/ui/PageHeader';
 import serviceData from '../../data/services.json';
-import * as FaIcons from 'react-icons/fa';
 import Button from '../../components/ui/Button';
+import { getIcon } from '../../lib/icons';
 import { FaCheck, FaStar, FaArrowRight } from 'react-icons/fa';
 
 // Type definition for services
@@ -27,15 +27,10 @@ interface Service {
   featured: boolean;
 }
 
-// Helper to resolve icon from string name
-const getIcon = (iconName: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (FaIcons as any)[iconName];
-};
+// Pre-cast services data at module level
+const services = serviceData as unknown as Service[];
 
 export default function ServicesPage() {
-  const services = serviceData as unknown as Service[];
-
   return (
     <>
       <PageHeader
