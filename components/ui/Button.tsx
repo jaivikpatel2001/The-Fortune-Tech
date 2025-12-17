@@ -9,6 +9,7 @@ interface ButtonProps {
     className?: string;
     type?: 'button' | 'submit' | 'reset';
     style?: CSSProperties;
+    target?: '_blank' | '_self' | '_parent' | '_top';
 }
 
 export default function Button({
@@ -18,13 +19,20 @@ export default function Button({
     onClick,
     className = '',
     type = 'button',
-    style
+    style,
+    target
 }: ButtonProps) {
     const baseClass = `btn btn-${variant} ${className}`;
 
     if (href) {
         return (
-            <Link href={href} className={baseClass} style={style}>
+            <Link
+                href={href}
+                className={baseClass}
+                style={style}
+                target={target}
+                rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+            >
                 {children}
             </Link>
         );

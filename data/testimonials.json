@@ -1,23 +1,67 @@
 [
     {
         "id": 1,
+        "slug": "sarah-johnson-techcorp",
         "name": "Sarah Johnson",
-        "role": "CTO, TechCorp",
-        "content": "The Fortune Tech transformed our digital infrastructure. Their expertise in cloud migration saved us 40% in operational costs.",
-        "avatar": "/images/avatars/sarah.jpg"
+        "role": "CTO",
+        "company": "TechCorp",
+        "industry": "Enterprise Technology",
+        "serviceProvided": "Cloud & DevOps",
+        "projectType": "Cloud Migration & Optimization",
+        "rating": 5,
+        "content": "The Fortune Tech transformed our digital infrastructure seamlessly. Their cloud expertise helped us reduce operational costs significantly while improving system reliability.",
+        "metrics": {
+            "costReduction": "40%",
+            "uptime": "99.9%",
+            "deploymentSpeed": "2x faster"
+        },
+        "avatar": "/images/avatars/sarah.jpg",
+        "linkedin": "https://linkedin.com/in/sarahjohnson",
+        "website": "https://techcorp.com",
+        "verified": true,
+        "featured": true
     },
     {
         "id": 2,
+        "slug": "michael-chen-startup-inc",
         "name": "Michael Chen",
-        "role": "Founder, StartUp Inc",
-        "content": "Exceptional work on our MVP. They delivered ahead of schedule and the code quality was top-notch. Highly recommended!",
-        "avatar": "/images/avatars/michael.jpg"
+        "role": "Founder & CEO",
+        "company": "StartUp Inc",
+        "industry": "SaaS Startup",
+        "serviceProvided": "Web Development",
+        "projectType": "MVP Development",
+        "rating": 5,
+        "content": "Exceptional work on our MVP. The team delivered ahead of schedule with excellent code quality and clear communication throughout the project.",
+        "metrics": {
+            "deliveryTime": "2 weeks early",
+            "scalability": "10k+ users supported"
+        },
+        "avatar": "/images/avatars/michael.jpg",
+        "linkedin": "https://linkedin.com/in/michaelchen",
+        "website": null,
+        "verified": true,
+        "featured": true
     },
     {
         "id": 3,
+        "slug": "emily-davis-growth-ltd",
         "name": "Emily Davis",
-        "role": "Director of Marketing, Growth Ltd",
-        "content": "Our new website looks stunning and performs perfectly. We've seen a 200% increase in lead generation since launch.",
-        "avatar": "/images/avatars/emily.jpg"
+        "role": "Director of Marketing",
+        "company": "Growth Ltd",
+        "industry": "Digital Marketing",
+        "serviceProvided": "UI/UX Design & Web Development",
+        "projectType": "Website Redesign",
+        "rating": 5,
+        "content": "Our new website not only looks stunning but performs flawlessly. We've seen massive growth in leads since the launch.",
+        "metrics": {
+            "leadIncrease": "200%",
+            "bounceRateReduction": "45%",
+            "pageSpeed": "90+ Lighthouse score"
+        },
+        "avatar": "/images/avatars/emily.jpg",
+        "linkedin": null,
+        "website": "https://growthltd.com",
+        "verified": true,
+        "featured": false
     }
 ]
