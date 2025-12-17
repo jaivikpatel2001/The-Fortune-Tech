@@ -3,12 +3,8 @@
 import { useState } from 'react';
 import PageHeader from '../../components/ui/PageHeader';
 import techData from '../../data/technologies.json';
-import * as FaIcons from 'react-icons/fa';
-import * as SiIcons from 'react-icons/si';
+import { getIcon } from '../../lib/icons';
 import { FaCode, FaServer, FaDatabase, FaCloud, FaStar, FaCheckCircle } from 'react-icons/fa';
-
-// Combine all icons
-const AllIcons = { ...FaIcons, ...SiIcons };
 
 interface TechItem {
   name: string;
@@ -118,8 +114,7 @@ export default function TechnologiesPage() {
                     {/* Technology Cards */}
                     <div className="tech-cards-grid-new">
                       {category.items.map((item, idx) => {
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        const Icon = (AllIcons as any)[item.icon];
+                        const Icon = getIcon(item.icon);
                         const isHovered = hoveredCard === idx;
 
                         return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "../styles/variables.css";
 import "../styles/globals.css";
 import "../styles/layout.css";
@@ -8,6 +9,17 @@ import "../styles/admin.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { ThemeProvider } from "../contexts/ThemeContext";
+
+// Optimized font loading using next/font
+// This automaticallysubsets the font and serves it from your domain
+// with optimal caching and font-display: swap
+const inter = Inter({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-inter',
+    // Only load the weights we actually use
+    weight: ['400', '500', '600', '700'],
+});
 
 export const metadata: Metadata = {
     title: {
@@ -30,13 +42,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-            </head>
-            <body>
+        <html lang="en" className={inter.variable} suppressHydrationWarning>
+            <body className={inter.className}>
                 <ThemeProvider>
                     <Navbar />
                     <main style={{ minHeight: '100vh' }}>
@@ -48,3 +55,4 @@ export default function RootLayout({
         </html>
     );
 }
+
