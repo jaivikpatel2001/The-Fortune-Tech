@@ -1,0 +1,211 @@
+[
+    {
+        "id": 1,
+        "slug": "fintech-analytics-platform",
+        "title": "FinTech Analytics Platform",
+        "category": "Web Development",
+        "industry": "Finance",
+        "client": {
+            "name": "Confidential FinTech Startup",
+            "location": "USA"
+        },
+        "description": "A scalable FinTech analytics platform providing real-time market insights, portfolio tracking, and AI-driven financial predictions.",
+        "keyFeatures": [
+            "Real-time market data visualization",
+            "AI-powered portfolio insights",
+            "Role-based access control",
+            "Secure data encryption",
+            "Custom financial reports"
+        ],
+        "techStack": {
+            "frontend": [
+                "Next.js",
+                "TypeScript"
+            ],
+            "backend": [
+                "Python",
+                "FastAPI"
+            ],
+            "database": [
+                "PostgreSQL",
+                "Redis"
+            ],
+            "cloud": [
+                "AWS",
+                "Docker"
+            ]
+        },
+        "metrics": {
+            "performanceBoost": "40%",
+            "userEngagement": "2.5x increase",
+            "uptime": "99.9%"
+        },
+        "timeline": "4 Months",
+        "status": "Completed",
+        "servicesProvided": [
+            "UI/UX Design",
+            "Frontend Development",
+            "Backend Architecture",
+            "Cloud Deployment"
+        ],
+        "links": {
+            "live": "https://example.com",
+            "caseStudy": "/case-studies/fintech-analytics",
+            "github": null
+        },
+        "thumbnail": "/images/portfolio/fintech.png",
+        "featured": true
+    },
+    {
+        "id": 2,
+        "slug": "ecommerce-mobile-app",
+        "title": "E-Commerce Mobile App",
+        "category": "Mobile App Development",
+        "industry": "Retail & Fashion",
+        "client": {
+            "name": "Fashion Retail Brand",
+            "location": "India"
+        },
+        "description": "A cross-platform e-commerce mobile app with AR try-on, fast checkout, and personalized product recommendations.",
+        "keyFeatures": [
+            "AR-based virtual try-on",
+            "Secure payment gateway",
+            "Wishlist & order tracking",
+            "Push notifications",
+            "Admin product management"
+        ],
+        "techStack": {
+            "mobile": [
+                "React Native"
+            ],
+            "backend": [
+                "Node.js",
+                "Express"
+            ],
+            "payments": [
+                "Stripe"
+            ],
+            "cloud": [
+                "Firebase"
+            ]
+        },
+        "metrics": {
+            "conversionRate": "+35%",
+            "appDownloads": "50K+",
+            "checkoutSpeed": "1.8s avg"
+        },
+        "timeline": "3 Months",
+        "status": "Live",
+        "servicesProvided": [
+            "Mobile App Development",
+            "API Integration",
+            "Payment Integration"
+        ],
+        "links": {
+            "live": "https://playstore-link.com",
+            "caseStudy": "/case-studies/ecommerce-app",
+            "github": null
+        },
+        "thumbnail": "/images/portfolio/ecommerce.png",
+        "featured": true
+    },
+    {
+        "id": 3,
+        "slug": "healthcare-patient-portal",
+        "title": "Healthcare Patient Portal",
+        "category": "Web Development",
+        "industry": "Healthcare",
+        "client": {
+            "name": "Multi-Specialty Clinic",
+            "location": "UK"
+        },
+        "description": "A secure healthcare portal enabling patients to manage appointments, medical records, and virtual consultations.",
+        "keyFeatures": [
+            "Appointment scheduling",
+            "Telemedicine video calls",
+            "Medical records access",
+            "Doctor-patient messaging",
+            "HIPAA-compliant security"
+        ],
+        "techStack": {
+            "frontend": [
+                "React"
+            ],
+            "backend": [
+                "Firebase Functions"
+            ],
+            "database": [
+                "Firestore"
+            ],
+            "compliance": [
+                "HIPAA"
+            ]
+        },
+        "metrics": {
+            "patientAdoption": "70%",
+            "adminWorkReduction": "50%"
+        },
+        "timeline": "2.5 Months",
+        "status": "Completed",
+        "servicesProvided": [
+            "Frontend Development",
+            "Backend Setup",
+            "Security & Compliance"
+        ],
+        "links": {
+            "live": null,
+            "caseStudy": "/case-studies/healthcare-portal",
+            "github": null
+        },
+        "thumbnail": "/images/portfolio/healthcare.png",
+        "featured": false
+    },
+    {
+        "id": 4,
+        "slug": "saas-dashboard-uiux",
+        "title": "Enterprise SaaS Dashboard Redesign",
+        "category": "UI/UX Design",
+        "industry": "SaaS",
+        "client": {
+            "name": "B2B SaaS Company",
+            "location": "Global"
+        },
+        "description": "End-to-end UI/UX redesign of an enterprise SaaS dashboard focused on usability, performance, and data clarity.",
+        "keyFeatures": [
+            "Information architecture redesign",
+            "Interactive data visualizations",
+            "Dark & light theme support",
+            "Design system creation"
+        ],
+        "techStack": {
+            "design": [
+                "Figma"
+            ],
+            "frontend": [
+                "React"
+            ],
+            "visualization": [
+                "D3.js"
+            ]
+        },
+        "metrics": {
+            "userEngagement": "+200%",
+            "supportTickets": "-45%"
+        },
+        "timeline": "6 Weeks",
+        "status": "Completed",
+        "servicesProvided": [
+            "UI/UX Research",
+            "Wireframing",
+            "High-fidelity Design",
+            "Frontend Support"
+        ],
+        "links": {
+            "live": null,
+            "caseStudy": "/case-studies/saas-dashboard",
+            "github": null
+        },
+        "thumbnail": "/images/portfolio/saas-dashboard.png",
+        "featured": false
+    }
+]
