@@ -102,6 +102,11 @@
                 "label": "Contact",
                 "href": "/contact",
                 "icon": null
+            },
+            {
+                "label": "Careers",
+                "href": "/careers",
+                "icon": null
             }
         ],
         "footer": {
@@ -121,6 +126,18 @@
                 {
                     "label": "Contact",
                     "href": "/contact"
+                },
+                {
+                    "label": "Careers",
+                    "href": "/careers"
+                },
+                {
+                    "label": "Login",
+                    "href": "/login"
+                },
+                {
+                    "label": "Sign Up",
+                    "href": "/signup"
                 }
             ],
             "services": [
@@ -144,15 +161,15 @@
             "legal": [
                 {
                     "label": "Privacy Policy",
-                    "href": "/privacy"
+                    "href": "/privacy-policy"
                 },
                 {
-                    "label": "Terms of Service",
-                    "href": "/terms"
+                    "label": "Terms & Conditions",
+                    "href": "/terms-and-conditions"
                 },
                 {
-                    "label": "Cookie Policy",
-                    "href": "/cookies"
+                    "label": "Disclaimer",
+                    "href": "/disclaimer"
                 }
             ]
         }
@@ -181,7 +198,7 @@
             }
         },
         "image": {
-            "src": "/images/hero/hero.png",
+            "src": "/images/hero/heroimg.png",
             "alt": "Modern tech team collaborating"
         }
     },

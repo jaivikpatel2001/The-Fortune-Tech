@@ -1,0 +1,69 @@
+{
+    "pages": [
+        {
+            "id": "privacy-policy",
+            "title": "Privacy Policy",
+            "lastUpdated": "2025-12-18",
+            "content": [
+                {
+                    "heading": "Introduction",
+                    "html": "<p>At <strong>Fortune Tech</strong>, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website, along with your privacy rights and legal protections.</p>"
+                },
+                {
+                    "heading": "Data Collection",
+                    "html": "<p>We may collect, use, store, and transfer different kinds of personal data, including:</p><ul><li>Identity Data</li><li>Contact Data</li><li>Technical Data</li><li>Usage Data</li><li>Marketing and Communication Data</li></ul>"
+                },
+                {
+                    "heading": "How We Use Your Data",
+                    "html": "<p>We will only use your personal data when legally permitted. Common uses include:</p><ul><li>To perform contracts with you</li><li>For our legitimate business interests where your rights are not overridden</li><li>To comply with legal and regulatory obligations</li></ul>"
+                },
+                {
+                    "heading": "Data Security",
+                    "html": "<p>We implement appropriate technical and organizational security measures to protect your personal data from unauthorized access, loss, misuse, alteration, or disclosure.</p>"
+                }
+            ]
+        },
+        {
+            "id": "terms-and-conditions",
+            "title": "Terms & Conditions",
+            "lastUpdated": "2025-12-18",
+            "content": [
+                {
+                    "heading": "Agreement to Terms",
+                    "html": "<p>These <strong>Terms and Conditions</strong> form a legally binding agreement between you and <strong>Fortune Tech</strong> regarding your access to and use of our website.</p>"
+                },
+                {
+                    "heading": "Intellectual Property Rights",
+                    "html": "<p>Unless otherwise stated, all content on this website—including source code, design, text, graphics, logos, and media—is the intellectual property of Fortune Tech and is protected by applicable laws.</p>"
+                },
+                {
+                    "heading": "User Representations",
+                    "html": "<p>By using this website, you represent that:</p><ul><li>All information provided by you is accurate and complete</li><li>You will maintain and update your information as required</li><li>You are legally permitted to use this website</li></ul>"
+                },
+                {
+                    "heading": "Prohibited Activities",
+                    "html": "<p>You agree not to use the website for any unlawful or unauthorized purpose. Commercial use of the site is prohibited unless explicitly approved by Fortune Tech.</p>"
+                }
+            ]
+        },
+        {
+            "id": "disclaimer",
+            "title": "Disclaimer",
+            "lastUpdated": "2025-12-18",
+            "content": [
+                {
+                    "heading": "General Information",
+                    "html": "<p>The information provided by <strong>Fortune Tech</strong> is for general informational purposes only. While we strive for accuracy, we make no guarantees regarding completeness, reliability, or suitability of the information.</p>"
+                },
+                {
+                    "heading": "External Links Disclaimer",
+                    "html": "<p>Our website may contain links to third-party websites. Fortune Tech does not monitor or verify the accuracy or reliability of any external content and is not responsible for any third-party material.</p>"
+                },
+                {
+                    "heading": "Professional Disclaimer",
+                    "html": "<p>The website does not provide professional IT advice. All content is for informational purposes only and should not be considered a substitute for professional consultation.</p>"
+                }
+            ]
+        }
+    ]
+}

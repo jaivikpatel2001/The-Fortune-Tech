@@ -105,7 +105,16 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} {site.name}. All rights reserved. Built with ❤️ for innovation.</p>
+          <div className="footer-bottom-content">
+            <p>&copy; {currentYear} {site.name}. All rights reserved. Built with ❤️ for innovation.</p>
+            <div className="footer-legal-links">
+              {navigation.footer.legal.map((link, index) => (
+                <Link key={index} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

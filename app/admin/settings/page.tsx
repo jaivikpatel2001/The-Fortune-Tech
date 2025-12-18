@@ -2,185 +2,184 @@
 
 import { useState } from 'react';
 import AdminLayout from '../../../components/admin/AdminLayout';
-import { FaSave, FaUndo } from 'react-icons/fa';
+import { FaSave, FaGlobe, FaBuilding, FaShareAlt, FaSearch, FaCogs } from 'react-icons/fa';
+import websiteConfigRaw from '../../../data/website-config.json';
 
 export default function SettingsPage() {
-    const [settings, setSettings] = useState({
-        siteName: 'Fortune Tech',
-        siteEmail: 'hello@fortunetech.com',
-        timezone: 'UTC-8',
-        language: 'en',
-        emailNotifications: true,
-        pushNotifications: true,
-        twoFactorAuth: false,
-        maintenanceMode: false,
-        apiAccess: true,
-        analyticsTracking: true,
-    });
+    const [config, setConfig] = useState(websiteConfigRaw);
+    const [activeTab, setActiveTab] = useState('site');
+    const [isSaving, setIsSaving] = useState(false);
 
-    const handleToggle = (key: string) => {
-        setSettings(prev => ({
+    const handleSave = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSaving(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setIsSaving(false);
+        alert('Settings saved successfully (Mock)');
+    };
+
+    const handleInputChange = (section: string, field: string, value: any) => {
+        setConfig(prev => ({
             ...prev,
-            [key]: !prev[key as keyof typeof prev]
+            [section]: {
+                ...((prev as any)[section]),
+                [field]: value
+            }
         }));
+    };
+
+    const handleNestedInputChange = (section: string, subSection: string, field: string, value: any) => {
+        setConfig(prev => ({
+            ...prev,
+            [section]: {
+                ...((prev as any)[section]),
+                [subSection]: {
+                    ...((prev as any)[section][subSection]),
+                    [field]: value
+                }
+            }
+        }));
+    };
+
+    const tabs = [
+        { id: 'site', label: 'General', icon: FaGlobe },
+        { id: 'company', label: 'Company', icon: FaBuilding },
+        { id: 'social', label: 'Social', icon: FaShareAlt },
+        { id: 'seo', label: 'SEO', icon: FaSearch },
+        { id: 'features', label: 'Features', icon: FaCogs },
+    ];
+
+    const renderField = (section: string, key: string, value: any, label: string) => {
+        const type = typeof value;
+
+        if (type === 'object' && value !== null && !Array.isArray(value)) {
+            // Nested object - simplified for this demo by only showing top-level fields
+            return null;
+        }
+
+        return (
+            <div key={key} className="form-group">
+                <label className="form-label">{label}</label>
+                {type === 'boolean' ? (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <input
+                            type="checkbox"
+                            checked={value}
+                            onChange={(e) => handleInputChange(section, key, e.target.checked)}
+                        />
+                        <span>Enable {label}</span>
+                    </div>
+                ) : (
+                    <input
+                        type={type === 'number' ? 'number' : 'text'}
+                        className="form-input"
+                        value={value || ''}
+                        onChange={(e) => handleInputChange(section, key, type === 'number' ? Number(e.target.value) : e.target.value)}
+                    />
+                )}
+            </div>
+        );
     };
 
     return (
         <AdminLayout pageTitle="Settings">
-            <div className="admin-form-grid">
-                {/* General Settings */}
-                <div>
-                    <div className="admin-form-section">
-                        <h3 className="admin-form-section-title">General Settings</h3>
-
-                        <div className="admin-form-row">
-                            <div className="form-group">
-                                <label className="form-label">Site Name</label>
-                                <input
-                                    type="text"
-                                    className="form-input"
-                                    value={settings.siteName}
-                                    onChange={(e) => setSettings({ ...settings, siteName: e.target.value })}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label className="form-label">Site Email</label>
-                                <input
-                                    type="email"
-                                    className="form-input"
-                                    value={settings.siteEmail}
-                                    onChange={(e) => setSettings({ ...settings, siteEmail: e.target.value })}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="admin-form-row">
-                            <div className="form-group">
-                                <label className="form-label">Timezone</label>
-                                <select
-                                    className="form-input"
-                                    value={settings.timezone}
-                                    onChange={(e) => setSettings({ ...settings, timezone: e.target.value })}
-                                >
-                                    <option value="UTC-12">UTC-12:00</option>
-                                    <option value="UTC-8">UTC-08:00 (Pacific)</option>
-                                    <option value="UTC-5">UTC-05:00 (Eastern)</option>
-                                    <option value="UTC">UTC+00:00</option>
-                                    <option value="UTC+5:30">UTC+05:30 (India)</option>
-                                    <option value="UTC+8">UTC+08:00 (China)</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label className="form-label">Language</label>
-                                <select
-                                    className="form-input"
-                                    value={settings.language}
-                                    onChange={(e) => setSettings({ ...settings, language: e.target.value })}
-                                >
-                                    <option value="en">English</option>
-                                    <option value="es">Spanish</option>
-                                    <option value="fr">French</option>
-                                    <option value="de">German</option>
-                                    <option value="ja">Japanese</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="admin-form-section" style={{ marginTop: '1.5rem' }}>
-                        <h3 className="admin-form-section-title">Notifications</h3>
-
-                        <div className="toggle-wrapper">
-                            <div className="toggle-label">
-                                <span className="toggle-label-title">Email Notifications</span>
-                                <span className="toggle-label-description">Receive email updates about account activity</span>
-                            </div>
-                            <div
-                                className={`toggle-switch ${settings.emailNotifications ? 'active' : ''}`}
-                                onClick={() => handleToggle('emailNotifications')}
-                            />
-                        </div>
-
-                        <div className="toggle-wrapper">
-                            <div className="toggle-label">
-                                <span className="toggle-label-title">Push Notifications</span>
-                                <span className="toggle-label-description">Receive push notifications in browser</span>
-                            </div>
-                            <div
-                                className={`toggle-switch ${settings.pushNotifications ? 'active' : ''}`}
-                                onClick={() => handleToggle('pushNotifications')}
-                            />
-                        </div>
-                    </div>
+            <div className="settings-container">
+                <div className="settings-sidebar admin-card">
+                    {tabs.map(tab => (
+                        <button
+                            key={tab.id}
+                            className={`settings-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab.id)}
+                        >
+                            <tab.icon />
+                            <span>{tab.label}</span>
+                        </button>
+                    ))}
                 </div>
 
-                {/* Security & Advanced */}
-                <div>
-                    <div className="admin-form-section">
-                        <h3 className="admin-form-section-title">Security</h3>
-
-                        <div className="toggle-wrapper">
-                            <div className="toggle-label">
-                                <span className="toggle-label-title">Two-Factor Authentication</span>
-                                <span className="toggle-label-description">Add extra layer of security</span>
-                            </div>
-                            <div
-                                className={`toggle-switch ${settings.twoFactorAuth ? 'active' : ''}`}
-                                onClick={() => handleToggle('twoFactorAuth')}
-                            />
-                        </div>
-
-                        <div className="toggle-wrapper">
-                            <div className="toggle-label">
-                                <span className="toggle-label-title">API Access</span>
-                                <span className="toggle-label-description">Allow API access to your data</span>
-                            </div>
-                            <div
-                                className={`toggle-switch ${settings.apiAccess ? 'active' : ''}`}
-                                onClick={() => handleToggle('apiAccess')}
-                            />
-                        </div>
+                <div className="settings-content admin-card">
+                    <div className="admin-card-header">
+                        <h3 className="admin-card-title">
+                            {tabs.find(t => t.id === activeTab)?.label} Settings
+                        </h3>
                     </div>
 
-                    <div className="admin-form-section" style={{ marginTop: '1.5rem' }}>
-                        <h3 className="admin-form-section-title">Advanced</h3>
+                    <form onSubmit={handleSave} style={{ padding: '1.5rem' }}>
+                        <div className="admin-form-grid">
+                            {Object.entries((config as any)[activeTab]).map(([key, value]) => {
+                                // Basic dynamic field generation
+                                // Convert camelCase or snake_case to Title Case for labels
+                                const label = key
+                                    .replace(/([A-Z])/g, ' $1')
+                                    .replace(/^./, str => str.toUpperCase());
 
-                        <div className="toggle-wrapper">
-                            <div className="toggle-label">
-                                <span className="toggle-label-title">Maintenance Mode</span>
-                                <span className="toggle-label-description">Take the site offline temporarily</span>
-                            </div>
-                            <div
-                                className={`toggle-switch ${settings.maintenanceMode ? 'active' : ''}`}
-                                onClick={() => handleToggle('maintenanceMode')}
-                            />
+                                return renderField(activeTab, key, value, label);
+                            })}
                         </div>
 
-                        <div className="toggle-wrapper">
-                            <div className="toggle-label">
-                                <span className="toggle-label-title">Analytics Tracking</span>
-                                <span className="toggle-label-description">Track user behavior and analytics</span>
-                            </div>
-                            <div
-                                className={`toggle-switch ${settings.analyticsTracking ? 'active' : ''}`}
-                                onClick={() => handleToggle('analyticsTracking')}
-                            />
+                        <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'flex-end' }}>
+                            <button type="submit" className="btn btn-primary" disabled={isSaving}>
+                                <FaSave /> {isSaving ? 'Saving...' : 'Save Settings'}
+                            </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
-            {/* Actions */}
-            <div className="admin-form-actions">
-                <button className="btn btn-outline">
-                    <FaUndo />
-                    Reset Changes
-                </button>
-                <button className="btn btn-primary">
-                    <FaSave />
-                    Save Settings
-                </button>
-            </div>
+            <style jsx>{`
+                .settings-container {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+                .settings-sidebar {
+                    padding: 0.5rem;
+                    display: flex;
+                    gap: 0.5rem;
+                    overflow-x: auto;
+                    background: var(--glass-bg);
+                    border: 1px solid var(--glass-border);
+                    border-radius: var(--radius-lg);
+                    scrollbar-width: none;
+                }
+                .settings-sidebar::-webkit-scrollbar {
+                    display: none;
+                }
+                .settings-tab-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 0.75rem 1.25rem;
+                    border: none;
+                    background: none;
+                    color: var(--text-muted);
+                    border-radius: var(--radius-md);
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    font-size: 0.9375rem;
+                    white-space: nowrap;
+                }
+                .settings-tab-btn:hover {
+                    background: var(--glass-hover);
+                    color: var(--text-primary);
+                }
+                .settings-tab-btn.active {
+                    background: var(--accent-gradient);
+                    color: white;
+                    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+                }
+                .form-group {
+                    margin-bottom: 1.25rem;
+                }
+                .form-label {
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    color: var(--text-secondary);
+                }
+            `}</style>
         </AdminLayout>
     );
 }

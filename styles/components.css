@@ -505,10 +505,17 @@
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
-  margin-top: 4rem;
+  gap: 1.5rem;
+  margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--glass-border);
+}
+
+@media (min-width: 768px) {
+  .hero-stats {
+    gap: 4rem;
+    margin-top: 4rem;
+  }
 }
 
 .stat-item {
@@ -536,22 +543,22 @@
   aspect-ratio: 4/3;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-glow);
+  /* box-shadow: var(--shadow-glow); */
 }
 
 .hero-visual img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain !important;
 }
 
-.hero-visual::before {
+/* .hero-visual::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
   pointer-events: none;
-}
+} */
 
 /* ===== SERVICES SECTION ===== */
 .services-section {
@@ -1143,8 +1150,15 @@
 /* ===== PORTFOLIO ===== */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+  }
 }
 
 .project-card {
@@ -2218,8 +2232,15 @@
 /* ===== REDESIGNED TESTIMONIALS ===== */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+  }
 }
 
 .testimonial-card-new {
@@ -2439,8 +2460,15 @@
 /* ===== REDESIGNED SERVICES CARDS ===== */
 .services-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .services-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+  }
 }
 
 .service-card-link {
@@ -2996,12 +3024,19 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
-  padding: 3rem;
+  gap: 2rem;
+  padding: 1.5rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-2xl);
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .service-section {
+    padding: 3rem;
+    gap: 3rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -3901,7 +3936,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .tech-stack-card {
@@ -4040,4 +4075,24 @@
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* ===== LEGAL PAGE ===== */
+.legal-section-text ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.legal-section-text li {
+  margin-bottom: 0.5rem;
+  list-style-type: disc;
+}
+
+.legal-section-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.legal-section-text p {
+  margin-bottom: 1rem;
 }

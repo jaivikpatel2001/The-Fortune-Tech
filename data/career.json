@@ -1,0 +1,94 @@
+[
+    {
+        "id": "full-stack-dev-01",
+        "title": "Senior Full Stack Developer",
+        "department": "Engineering",
+        "location": "Ahmadabad, India (Remote Available)",
+        "experience": "5+ Years",
+        "type": "Full-time",
+        "description": "We are looking for a Senior Full Stack Developer to lead our web application projects using Next.js, TypeScript, and Node.js. You will be responsible for building scalable, high-performance applications and mentoring junior developers.",
+        "requirements": [
+            "Strong experience with React.js, Next.js, and TypeScript.",
+            "Proficient in Node.js and Express.",
+            "Experience with PostgreSQL or MongoDB.",
+            "Knowledge of AWS services (S3, EC2, Lambda).",
+            "Excellent problem-solving and communication skills."
+        ],
+        "benefits": [
+            "Competitive salary",
+            "Flexible working hours",
+            "Health insurance",
+            "Professional development budget"
+        ],
+        "applyLink": "https://thefortunetech.com/apply/senior-full-stack-dev"
+    },
+    {
+        "id": "ui-ux-designer-01",
+        "title": "UI/UX Designer",
+        "department": "Design",
+        "location": "Ahmadabad, India",
+        "experience": "3+ Years",
+        "type": "Full-time",
+        "description": "Join our creative team to design intuitive and visually stunning user interfaces. You will work closely with product managers and developers to turn complex requirements into delightful user experiences.",
+        "requirements": [
+            "Proficiency in Figma and Adobe Creative Suite.",
+            "Strong portfolio showcasing UI/UX design projects.",
+            "Experience with user research and usability testing.",
+            "Understanding of responsive design principles.",
+            "Knowledge of HTML/CSS is a plus."
+        ],
+        "benefits": [
+            "Creative work environment",
+            "Modern tools and equipment",
+            "Paid time off",
+            "Team outings"
+        ],
+        "applyLink": "https://thefortunetech.com/apply/ui-ux-designer"
+    },
+    {
+        "id": "frontend-dev-01",
+        "title": "Frontend Developer (React)",
+        "department": "Engineering",
+        "location": "Remote",
+        "experience": "2+ Years",
+        "type": "Full-time",
+        "description": "We are seeking a Frontend Developer focused on building clean, performant, and responsive user interfaces. You will be working primarily with React and modern CSS frameworks.",
+        "requirements": [
+            "Solid understanding of React.js and its ecosystem.",
+            "Proficient in CSS/SCSS and responsive design.",
+            "Experience with state management (Redux, Zustand, etc.).",
+            "Familiarity with REST APIs and GraphQL.",
+            "Detail-oriented with a passion for clean code."
+        ],
+        "benefits": [
+            "Remote-first culture",
+            "Flexible schedule",
+            "Learning resources",
+            "Monthly gym allowance"
+        ],
+        "applyLink": "https://thefortunetech.com/apply/frontend-dev"
+    },
+    {
+        "id": "backend-dev-01",
+        "title": "Backend Developer",
+        "department": "Engineering",
+        "location": "Ahmadabad, India",
+        "experience": "3+ Years",
+        "type": "Full-time",
+        "description": "Develop robust and scalable server-side logic and database schemas. You will be responsible for building secure APIs and ensuring the overall performance of our backend systems.",
+        "requirements": [
+            "Strong command over Node.js and Express.",
+            "Experience with relational databases like PostgreSQL.",
+            "Familiarity with Redis and caching strategies.",
+            "Understanding of microservices architecture.",
+            "Experience with Docker and CI/CD pipelines."
+        ],
+        "benefits": [
+            "Performance bonuses",
+            "Family health cover",
+            "Skill-up certifications",
+            "Dynamic working environment"
+        ],
+        "applyLink": "https://thefortunetech.com/apply/backend-dev"
+    }
+]
