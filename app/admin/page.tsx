@@ -2,9 +2,14 @@
 
 import AdminLayout from '../../components/admin/AdminLayout';
 import {
-    FaUsers, FaArrowUp, FaArrowDown, FaUser, FaExclamationTriangle
+    FaUsers, FaArrowUp, FaArrowDown, FaUser, FaExclamationTriangle,
+    FaBriefcase, FaProjectDiagram, FaServicestack, FaQuoteLeft
 } from 'react-icons/fa';
 import usersData from '../../data/users.json';
+import portfolioData from '../../data/portfolio.json';
+import servicesData from '../../data/services.json';
+import careerData from '../../data/career.json';
+import testimonialsData from '../../data/testimonials.json';
 
 const stats = [
     {
@@ -22,6 +27,38 @@ const stats = [
         positive: true,
         icon: FaUser,
         color: 'green'
+    },
+    {
+        label: 'Total Projects',
+        value: portfolioData.length.toString(),
+        change: '+2',
+        positive: true,
+        icon: FaProjectDiagram,
+        color: 'blue'
+    },
+    {
+        label: 'Services',
+        value: servicesData.length.toString(),
+        change: '+1',
+        positive: true,
+        icon: FaServicestack,
+        color: 'orange'
+    },
+    {
+        label: 'Open Positions',
+        value: careerData.length.toString(),
+        change: 'New',
+        positive: true,
+        icon: FaBriefcase,
+        color: 'cyan'
+    },
+    {
+        label: 'Testimonials',
+        value: testimonialsData.length.toString(),
+        change: '+4.1%',
+        positive: true,
+        icon: FaQuoteLeft,
+        color: 'pink'
     }
 ];
 

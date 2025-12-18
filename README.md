@@ -20,7 +20,8 @@ A modern, production-ready IT consulting and software development website built 
 │   ├── services/          # Services page
 │   ├── technologies/      # Technologies page
 │   ├── portfolio/         # Portfolio page
-│   └── contact/           # Contact page
+│   ├── contact/           # Contact page
+│   └── admin/             # Admin Dashboard (Users, Services, Portfolio)
 ├── components/
 │   ├── layout/            # Layout components (Navbar, Footer)
 │   ├── ui/                # Reusable UI components (Button, Card, etc.)
@@ -37,7 +38,11 @@ A modern, production-ready IT consulting and software development website built 
 │   ├── services.json
 │   ├── technologies.json
 │   ├── portfolio.json
-│   └── testimonials.json
+│   ├── testimonials.json
+│   ├── users.json
+│   ├── career.json
+│   ├── cms.json
+│   └── website-config.json
 └── public/                # Static assets
 
 ```
@@ -118,6 +123,13 @@ npm start
 - Contact form (UI only, backend-ready)
 - Contact information
 - Google Maps embed
+
+### Admin Panel (Protected)
+- **Dashboard**: Real-time summary of Users, Projects, Services, and Careers
+- **User Management**: View, Edit, and Manage user accounts and roles
+- **Content Management**: Dedicated interfaces for Portfolio, Services, and Testimonials
+- **Settings**: Global website configuration and SEO management
+- **Dark Mode Support**: Fully themed admin interface with glassmorphism
 
 ## ⚡ Performance Optimizations
 

@@ -25,9 +25,9 @@ const transformUsers = () => {
             role: (usersJsonData.roles as any)[user.role]?.name || user.role,
             roleKey: user.role,
             joined: formatDate(user.metadata.createdAt),
-            lastLogin: formatDate(user.metadata.lastLogin),
-            bio: user.bio || 'No bio provided.',
-            avatar: user.photoURL
+            lastLogin: user.security.lastLogin ? formatDate(user.security.lastLogin) : 'Never',
+            bio: (user.profile as any).bio || 'No bio provided.',
+            avatar: (user as any).avatar
         };
     });
 };
