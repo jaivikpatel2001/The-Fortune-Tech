@@ -2,8 +2,7 @@
 
 import AdminLayout from '../../components/admin/AdminLayout';
 import {
-    FaUsers, FaDollarSign, FaShoppingCart, FaChartLine,
-    FaArrowUp, FaArrowDown, FaUser, FaShoppingBag, FaEnvelope, FaExclamationTriangle, FaChartArea
+    FaUsers, FaArrowUp, FaArrowDown, FaUser, FaExclamationTriangle
 } from 'react-icons/fa';
 import usersData from '../../data/users.json';
 
@@ -17,34 +16,17 @@ const stats = [
         color: 'purple'
     },
     {
-        label: 'Revenue',
-        value: '$48,295',
-        change: '+8.2%',
+        label: 'Active Users',
+        value: usersData.users.filter(u => u.status === 'active').length.toString(),
+        change: '+5.2%',
         positive: true,
-        icon: FaDollarSign,
+        icon: FaUser,
         color: 'green'
-    },
-    {
-        label: 'Orders',
-        value: '1,847',
-        change: '-3.1%',
-        positive: false,
-        icon: FaShoppingCart,
-        color: 'blue'
-    },
-    {
-        label: 'Conversion',
-        value: '3.24%',
-        change: '+1.8%',
-        positive: true,
-        icon: FaChartLine,
-        color: 'orange'
-    },
+    }
 ];
 
 // Get recent users from users.json
 const recentUsers = usersData.users.slice(0, 5).map(user => {
-    // Calculate relative time from lastLogin
     const getRelativeTime = (dateString: string | null) => {
         if (!dateString) return 'Never';
         const date = new Date(dateString);
@@ -69,14 +51,6 @@ const recentUsers = usersData.users.slice(0, 5).map(user => {
     };
 });
 
-const recentActivity = [
-    { type: 'user', icon: FaUser, text: '<strong>John Doe</strong> registered a new account', time: '2 minutes ago' },
-    { type: 'order', icon: FaShoppingBag, text: 'New order <strong>#1234</strong> received', time: '15 minutes ago' },
-    { type: 'message', icon: FaEnvelope, text: '<strong>Sarah</strong> sent a support message', time: '1 hour ago' },
-    { type: 'alert', icon: FaExclamationTriangle, text: 'Server CPU usage reached <strong>85%</strong>', time: '2 hours ago' },
-    { type: 'user', icon: FaUser, text: '<strong>Mike Chen</strong> updated profile', time: '3 hours ago' },
-];
-
 export default function AdminDashboard() {
     return (
         <AdminLayout pageTitle="Dashboard">
@@ -99,50 +73,6 @@ export default function AdminDashboard() {
                 ))}
             </div>
 
-            {/* Charts & Tables Row */}
-            <div className="admin-form-grid" style={{ marginBottom: '1.5rem' }}>
-                {/* Chart Card */}
-                <div className="admin-card">
-                    <div className="admin-card-header">
-                        <h3 className="admin-card-title">Revenue Overview</h3>
-                        <div className="admin-card-actions">
-                            <select className="form-input" style={{ width: 'auto', padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
-                                <option>Last 7 days</option>
-                                <option>Last 30 days</option>
-                                <option>Last 3 months</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="chart-container">
-                        <div className="chart-placeholder">
-                            <FaChartArea />
-                            <p>Chart visualization would appear here</p>
-                            <p style={{ fontSize: '0.8125rem' }}>Integrate with Chart.js or Recharts</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Recent Activity */}
-                <div className="admin-card">
-                    <div className="admin-card-header">
-                        <h3 className="admin-card-title">Recent Activity</h3>
-                    </div>
-                    <div className="activity-list">
-                        {recentActivity.map((activity, index) => (
-                            <div key={index} className="activity-item">
-                                <div className={`activity-icon ${activity.type}`}>
-                                    <activity.icon />
-                                </div>
-                                <div className="activity-content">
-                                    <p className="activity-text" dangerouslySetInnerHTML={{ __html: activity.text }} />
-                                    <span className="activity-time">{activity.time}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
             {/* Recent Users Table */}
             <div className="admin-card">
                 <div className="admin-card-header">
@@ -150,9 +80,6 @@ export default function AdminDashboard() {
                     <div className="admin-card-actions">
                         <button className="btn btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
                             Export
-                        </button>
-                        <button className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
-                            + Add User
                         </button>
                     </div>
                 </div>
@@ -205,13 +132,6 @@ export default function AdminDashboard() {
                 </div>
                 <div className="admin-pagination">
                     <span className="pagination-info">Showing 1-{recentUsers.length} of {usersData.metadata.totalUsers} users</span>
-                    <div className="pagination-buttons">
-                        <button className="pagination-btn" disabled>&lt;</button>
-                        <button className="pagination-btn active">1</button>
-                        <button className="pagination-btn">2</button>
-                        <button className="pagination-btn">3</button>
-                        <button className="pagination-btn">&gt;</button>
-                    </div>
                 </div>
             </div>
         </AdminLayout>
