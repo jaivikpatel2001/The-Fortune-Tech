@@ -43,6 +43,21 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={inter.variable} suppressHydrationWarning>
+            <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    var theme = localStorage.getItem('theme');
+                                    if (!theme) theme = 'light';
+                                    document.documentElement.setAttribute('data-theme', theme);
+                                } catch (e) {}
+                            })();
+                        `,
+                    }}
+                />
+            </head>
             <body className={inter.className}>
                 <ThemeProvider>
                     <Navbar />

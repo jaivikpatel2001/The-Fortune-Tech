@@ -102,6 +102,11 @@
                 "label": "Contact",
                 "href": "/contact",
                 "icon": null
+            },
+            {
+                "label": "Careers",
+                "href": "/careers",
+                "icon": null
             }
         ],
         "footer": {
@@ -121,6 +126,10 @@
                 {
                     "label": "Contact",
                     "href": "/contact"
+                },
+                {
+                    "label": "Careers",
+                    "href": "/careers"
                 }
             ],
             "services": [
