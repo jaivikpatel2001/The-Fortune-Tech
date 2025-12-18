@@ -167,7 +167,7 @@ export default function TestimonialsPage() {
                             <button className="table-action-btn" onClick={handleCloseModals}><FaTimes /></button>
                         </div>
                         <form onSubmit={handleSave} style={{ padding: '1.5rem' }}>
-                            <div className="admin-form-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
+                            <div className="admin-grid-2">
                                 <div className="form-group">
                                     <label className="form-label">Client Name</label>
                                     <input name="name" className="form-input" value={formData.name || ''} onChange={handleInputChange} required />

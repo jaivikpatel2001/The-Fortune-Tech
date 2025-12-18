@@ -19,9 +19,7 @@
   gap: 2rem;
 }
 
-.grid-2 { grid-template-columns: 1fr; }
-.grid-3 { grid-template-columns: 1fr; }
-.grid-4 { grid-template-columns: repeat(2, 1fr); }
+.grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
 
 /* Flex Utilities */
 .flex { display: flex; }
@@ -327,11 +325,20 @@
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* Allow 2 columns on tablet for larger grids */
+  .grid-3-tablet { grid-template-columns: repeat(2, 1fr); }
   
   .nav-links { display: flex; }
   .mobile-menu-btn { display: none; }
   
   .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    --container-padding: 16px;
+  }
 }
 
 @media (min-width: 1024px) {

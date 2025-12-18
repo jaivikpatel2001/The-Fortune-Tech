@@ -188,7 +188,7 @@ export default function CareersPage() {
                             <button className="table-action-btn" onClick={handleCloseModals}><FaTimes /></button>
                         </div>
                         <form onSubmit={handleSave} style={{ padding: '1.5rem' }}>
-                            <div className="admin-form-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+                            <div className="admin-grid-2">
                                 <div className="form-group">
                                     <label className="form-label">Job Title</label>
                                     <input name="title" className="form-input" value={formData.title || ''} onChange={handleInputChange} required />
@@ -253,7 +253,7 @@ export default function CareersPage() {
                             <button className="table-action-btn" onClick={handleCloseModals}><FaTimes /></button>
                         </div>
                         <div style={{ padding: '2rem' }}>
-                            <div className="detail-grid" style={{ gridTemplateColumns: '1fr 1fr', marginBottom: '1.5rem' }}>
+                            <div className="admin-grid-2" style={{ marginBottom: '1.5rem' }}>
                                 <div>
                                     <p><strong>Department:</strong> {viewingCareer.department}</p>
                                     <p><strong>Location:</strong> {viewingCareer.location}</p>
@@ -268,7 +268,7 @@ export default function CareersPage() {
                                 <h5 style={{ color: 'var(--accent-start)', marginBottom: '0.5rem' }}>Description</h5>
                                 <p style={{ fontSize: '0.9375rem', lineHeight: 1.6 }}>{viewingCareer.description}</p>
                             </div>
-                            <div className="detail-lists-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
+                            <div className="admin-grid-2">
                                 <div className="detail-list-item">
                                     <h6>Requirements</h6>
                                     <ul>{viewingCareer.requirements?.map((r, i) => <li key={i}><FaChevronRight size={10} /> {r}</li>)}</ul>

@@ -228,7 +228,7 @@ export default function ServicesPage() {
                             <button className="table-action-btn" onClick={handleCloseModals}><FaTimes /></button>
                         </div>
                         <form onSubmit={handleSave} style={{ padding: '1.5rem' }}>
-                            <div className="admin-form-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+                            <div className="admin-grid-2">
                                 <div className="form-group">
                                     <label className="form-label">Title</label>
                                     <input name="title" className="form-input" value={formData.title || ''} onChange={handleInputChange} required />
@@ -403,9 +403,14 @@ export default function ServicesPage() {
                 
                 .detail-grid {
                     display: grid;
-                    grid-template-columns: 1fr 2fr;
                     gap: 2rem;
                     margin-bottom: 2rem;
+                }
+
+                @media (min-width: 640px) {
+                    .detail-grid {
+                        grid-template-columns: 1fr 2fr;
+                    }
                 }
                 .detail-section h5 {
                     color: var(--accent-start);

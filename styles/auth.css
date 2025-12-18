@@ -58,7 +58,13 @@
 }
 
 /* Logo image styling */
-.nav-logo-img,
+.nav-logo-img {
+    border-radius: var(--radius-sm);
+    max-height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
 .footer-logo-img {
     border-radius: var(--radius-sm);
 }
@@ -196,8 +202,14 @@
 /* Form Row (for name fields) */
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
+}
+
+@media (min-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 /* Remember Me & Forgot Password */

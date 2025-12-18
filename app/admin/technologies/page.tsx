@@ -149,7 +149,7 @@ export default function TechnologiesPage() {
                 </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
+            <div style={{ display: 'grid', gap: '2rem' }}>
                 {filtered.map((cat) => (
                     <div key={cat.slug} className="admin-card">
                         <div className="admin-card-header" style={{ background: 'rgba(139, 92, 246, 0.03)' }}>
@@ -236,7 +236,7 @@ export default function TechnologiesPage() {
                             <button className="table-action-btn" onClick={() => setIsItemModalOpen(false)}><FaTimes /></button>
                         </div>
                         <form onSubmit={handleSaveItem} style={{ padding: '1.5rem' }}>
-                            <div className="admin-form-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
+                            <div className="admin-grid-2">
                                 <div className="form-group">
                                     <label className="form-label">Tech Name</label>
                                     <input className="form-input" value={itemFormData.name || ''} onChange={(e) => setItemFormData({ ...itemFormData, name: e.target.value })} required />

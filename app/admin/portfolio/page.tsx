@@ -208,7 +208,7 @@ export default function PortfolioPage() {
                             <button className="table-action-btn" onClick={handleCloseModals}><FaTimes /></button>
                         </div>
                         <form onSubmit={handleSave} style={{ padding: '1.5rem' }}>
-                            <div className="admin-form-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                            <div className="admin-grid-3">
                                 <div className="form-group" style={{ gridColumn: 'span 2' }}>
                                     <label className="form-label">Project Title</label>
                                     <input name="title" className="form-input" value={formData.title || ''} onChange={handleInputChange} required />
@@ -276,7 +276,7 @@ export default function PortfolioPage() {
                             <button className="table-action-btn" onClick={handleCloseModals}><FaTimes /></button>
                         </div>
                         <div style={{ padding: '2rem' }}>
-                            <div className="detail-grid" style={{ gridTemplateColumns: '1fr 2fr', gap: '2rem', marginBottom: '2rem' }}>
+                            <div className="detail-grid">
                                 <div>
                                     <h5 style={{ color: 'var(--accent-start)', marginBottom: '1rem' }}>Project Meta</h5>
                                     <p><strong>Category:</strong> {viewingProject.category}</p>
@@ -292,7 +292,7 @@ export default function PortfolioPage() {
                                     <h5 style={{ color: 'var(--accent-start)', marginBottom: '0.5rem' }}>Overview</h5>
                                     <p style={{ lineHeight: 1.6 }}>{viewingProject.description}</p>
 
-                                    <div style={{ marginTop: '1.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                                    <div className="admin-grid-2" style={{ marginTop: '1.5rem' }}>
                                         <div>
                                             <h6 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Key Features</h6>
                                             <ul style={{ padding: 0, listStyle: 'none' }}>
@@ -320,6 +320,10 @@ export default function PortfolioPage() {
                 .form-label { display: block; margin-bottom: 0.375rem; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; }
                 .modal-content .form-input { background: var(--primary); border: 1px solid var(--glass-border); color: var(--text-primary); width: 100%; padding: 0.75rem; border-radius: 8px; font-size: 0.9375rem; }
                 .modal-content h5 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+                .detail-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+                @media (min-width: 768px) {
+                    .detail-grid { grid-template-columns: 1fr 2fr; }
+                }
             `}</style>
         </AdminLayout>
     );
