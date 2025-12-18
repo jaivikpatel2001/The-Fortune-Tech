@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
     FaHome, FaUsers, FaCog, FaChartBar, FaBox, FaEnvelope,
-    FaBell, FaSignOutAlt, FaTimes, FaBars, FaSearch, FaSun, FaMoon
+    FaBell, FaSignOutAlt, FaTimes, FaBars, FaSearch, FaSun, FaMoon,
+    FaBriefcase, FaIdCard, FaLaptopCode, FaQuoteLeft
 } from 'react-icons/fa';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -14,6 +15,10 @@ const navItems = [
     { name: 'Dashboard', href: '/admin', icon: FaHome },
     { name: 'Users', href: '/admin/users', icon: FaUsers },
     { name: 'Services', href: '/admin/services', icon: FaBox },
+    { name: 'Portfolio', href: '/admin/portfolio', icon: FaIdCard },
+    { name: 'Careers', href: '/admin/careers', icon: FaBriefcase },
+    { name: 'Technologies', href: '/admin/technologies', icon: FaLaptopCode },
+    { name: 'Testimonials', href: '/admin/testimonials', icon: FaQuoteLeft },
     { name: 'Settings', href: '/admin/settings', icon: FaCog },
 ];
 
