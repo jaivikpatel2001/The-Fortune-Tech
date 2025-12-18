@@ -545,13 +545,13 @@
   object-fit: contain !important;
 }
 
-.hero-visual::before {
-  /* content: '';
+/* .hero-visual::before {
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-  pointer-events: none; */
-}
+  pointer-events: none;
+} */
 
 /* ===== SERVICES SECTION ===== */
 .services-section {
@@ -4040,4 +4040,24 @@
   .contact-grid {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* ===== LEGAL PAGE ===== */
+.legal-section-text ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.legal-section-text li {
+  margin-bottom: 0.5rem;
+  list-style-type: disc;
+}
+
+.legal-section-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.legal-section-text p {
+  margin-bottom: 1rem;
 }

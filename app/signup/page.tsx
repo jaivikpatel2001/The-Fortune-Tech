@@ -249,8 +249,8 @@ export default function SignupPage() {
                                     onChange={(e) => setFormData({ ...formData, agreeTerms: e.target.checked })}
                                 />
                                 <span className="checkbox-label">
-                                    I agree to the <a href="#" className="forgot-password-link">Terms of Service</a> and{' '}
-                                    <a href="#" className="forgot-password-link">Privacy Policy</a>
+                                    I agree to the <Link href="/terms-and-conditions" className="forgot-password-link">Terms & Conditions</Link> and{' '}
+                                    <Link href="/privacy-policy" className="forgot-password-link">Privacy Policy</Link>
                                 </span>
                             </label>
                             {errors.agreeTerms && (
