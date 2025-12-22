@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import {
     FaHome, FaUsers, FaCog, FaChartBar, FaBox, FaEnvelope,
     FaBell, FaSignOutAlt, FaTimes, FaBars, FaSearch, FaSun, FaMoon,
-    FaBriefcase, FaIdCard, FaLaptopCode, FaQuoteLeft
+    FaBriefcase, FaIdCard, FaLaptopCode, FaQuoteLeft, FaFileAlt
 } from 'react-icons/fa';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -19,6 +19,7 @@ const navItems = [
     { name: 'Careers', href: '/admin/careers', icon: FaBriefcase },
     { name: 'Technologies', href: '/admin/technologies', icon: FaLaptopCode },
     { name: 'Testimonials', href: '/admin/testimonials', icon: FaQuoteLeft },
+    { name: 'CMS', href: '/admin/cms', icon: FaFileAlt },
     { name: 'Settings', href: '/admin/settings', icon: FaCog },
 ];
 

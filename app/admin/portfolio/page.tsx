@@ -6,6 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaSave, FaTimes, FaEye, FaChevronRight, FaLink, FaExternalLinkAlt } from 'react-icons/fa';
 import portfolioDataRaw from '../../../data/portfolio.json';
+import DeleteConfirmModal from '../../../components/ui/DeleteConfirmModal';
+import { useDeleteConfirm } from '../../../lib/hooks/useDeleteConfirm';
 
 interface PortfolioProject {
     id: number;
@@ -42,6 +44,7 @@ export default function PortfolioPage() {
     const [editingProject, setEditingProject] = useState<PortfolioProject | null>(null);
     const [viewingProject, setViewingProject] = useState<PortfolioProject | null>(null);
     const [formData, setFormData] = useState<Partial<PortfolioProject>>({});
+    const deleteConfirm = useDeleteConfirm();
 
     const filteredProjects = projects.filter(p =>
         p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -124,10 +127,15 @@ export default function PortfolioPage() {
         handleCloseModals();
     };
 
-    const handleDelete = (id: number) => {
-        if (confirm('Are you sure you want to delete this project?')) {
-            setProjects(prev => prev.filter(p => p.id !== id));
-        }
+    const handleDelete = (id: number, title: string) => {
+        deleteConfirm.showDeleteConfirm({
+            title: 'Delete Project',
+            message: 'This action will permanently delete this portfolio project. This cannot be undone.',
+            itemName: title,
+            onConfirm: () => {
+                setProjects(prev => prev.filter(p => p.id !== id));
+            }
+        });
     };
 
     return (
@@ -190,7 +198,7 @@ export default function PortfolioPage() {
                                         <div className="table-actions">
                                             <button className="table-action-btn" onClick={() => handleOpenDetail(p)} title="View Detail"><FaEye /></button>
                                             <button className="table-action-btn" onClick={() => handleOpenModal(p)} title="Edit"><FaEdit /></button>
-                                            <button className="table-action-btn delete" onClick={() => handleDelete(p.id)} title="Delete"><FaTrash /></button>
+                                            <button className="table-action-btn delete" onClick={() => handleDelete(p.id, p.title)} title="Delete"><FaTrash /></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -325,6 +333,9 @@ export default function PortfolioPage() {
                     .detail-grid { grid-template-columns: 1fr 2fr; }
                 }
             `}</style>
+
+            {/* Delete Confirmation Modal */}
+            <DeleteConfirmModal {...deleteConfirm.modalProps} />
         </AdminLayout>
     );
 }

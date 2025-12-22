@@ -4,6 +4,8 @@ import { useState } from 'react';
 import AdminLayout from '../../../components/admin/AdminLayout';
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaSave, FaTimes, FaEye, FaChevronRight, FaLink } from 'react-icons/fa';
 import careersDataRaw from '../../../data/career.json';
+import DeleteConfirmModal from '../../../components/ui/DeleteConfirmModal';
+import { useDeleteConfirm } from '../../../lib/hooks/useDeleteConfirm';
 
 interface Career {
     id: string;
@@ -27,6 +29,7 @@ export default function CareersPage() {
     const [editingCareer, setEditingCareer] = useState<Career | null>(null);
     const [viewingCareer, setViewingCareer] = useState<Career | null>(null);
     const [formData, setFormData] = useState<Partial<Career>>({});
+    const deleteConfirm = useDeleteConfirm();
 
     const filteredCareers = careers.filter(career =>
         career.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -94,10 +97,15 @@ export default function CareersPage() {
         handleCloseModals();
     };
 
-    const handleDelete = (id: string) => {
-        if (confirm('Are you sure you want to delete this job posting?')) {
-            setCareers(prev => prev.filter(c => c.id !== id));
-        }
+    const handleDelete = (id: string, title: string) => {
+        deleteConfirm.showDeleteConfirm({
+            title: 'Delete Job Posting',
+            message: 'This action will permanently delete this job posting. This cannot be undone.',
+            itemName: title,
+            onConfirm: () => {
+                setCareers(prev => prev.filter(c => c.id !== id));
+            }
+        });
     };
 
     return (
@@ -167,7 +175,7 @@ export default function CareersPage() {
                                             <button className="table-action-btn" onClick={() => handleOpenModal(career)} title="Edit">
                                                 <FaEdit />
                                             </button>
-                                            <button className="table-action-btn delete" onClick={() => handleDelete(career.id)} title="Delete">
+                                            <button className="table-action-btn delete" onClick={() => handleDelete(career.id, career.title)} title="Delete">
                                                 <FaTrash />
                                             </button>
                                         </div>
@@ -313,6 +321,9 @@ export default function CareersPage() {
                 .detail-list-item ul { list-style: none; padding: 0; }
                 .detail-list-item li { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.375rem; display: flex; align-items: center; gap: 0.5rem; }
             `}</style>
+
+            {/* Delete Confirmation Modal */}
+            <DeleteConfirmModal {...deleteConfirm.modalProps} />
         </AdminLayout>
     );
 }

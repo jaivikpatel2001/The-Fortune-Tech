@@ -4,6 +4,8 @@ import { useState } from 'react';
 import AdminLayout from '../../../components/admin/AdminLayout';
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaFilter, FaEye, FaTimes, FaEnvelope, FaCalendarAlt, FaUserTag, FaShieldAlt } from 'react-icons/fa';
 import usersJsonData from '../../../data/users.json';
+import DeleteConfirmModal from '../../../components/ui/DeleteConfirmModal';
+import { useDeleteConfirm } from '../../../lib/hooks/useDeleteConfirm';
 
 // Transform users from JSON to display format
 const transformUsers = () => {
@@ -40,6 +42,7 @@ export default function UsersPage() {
     const [statusFilter, setStatusFilter] = useState('all');
     const [viewingUser, setViewingUser] = useState<any | null>(null);
     const [isDetailOpen, setIsDetailOpen] = useState(false);
+    const deleteConfirm = useDeleteConfirm();
 
     const filteredUsers = users.filter(user => {
         const matchesSearch = user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -58,10 +61,15 @@ export default function UsersPage() {
         setIsDetailOpen(false);
     };
 
-    const handleDelete = (id: string) => {
-        if (confirm('Are you sure you want to delete this user?')) {
-            setUsers(prev => prev.filter(u => u.id !== id));
-        }
+    const handleDelete = (id: string, name: string) => {
+        deleteConfirm.showDeleteConfirm({
+            title: 'Delete User',
+            message: 'This action will permanently delete this user from the system. This cannot be undone.',
+            itemName: name,
+            onConfirm: () => {
+                setUsers(prev => prev.filter(u => u.id !== id));
+            }
+        });
     };
 
     const statusOptions = Object.keys(usersJsonData.statuses);
@@ -159,7 +167,7 @@ export default function UsersPage() {
                                             <button className="table-action-btn" title="Edit">
                                                 <FaEdit />
                                             </button>
-                                            <button className="table-action-btn delete" onClick={() => handleDelete(user.id)} title="Delete">
+                                            <button className="table-action-btn delete" onClick={() => handleDelete(user.id, user.name)} title="Delete">
                                                 <FaTrash />
                                             </button>
                                         </div>
@@ -224,6 +232,9 @@ export default function UsersPage() {
                     </div>
                 </div>
             )}
+
+            {/* Delete Confirmation Modal */}
+            <DeleteConfirmModal {...deleteConfirm.modalProps} />
 
             <style jsx>{`
                 .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 2rem; }

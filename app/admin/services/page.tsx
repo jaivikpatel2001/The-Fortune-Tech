@@ -4,6 +4,8 @@ import { useState } from 'react';
 import AdminLayout from '../../../components/admin/AdminLayout';
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaSave, FaTimes, FaEye, FaChevronRight } from 'react-icons/fa';
 import servicesDataRaw from '../../../data/services.json';
+import DeleteConfirmModal from '../../../components/ui/DeleteConfirmModal';
+import { useDeleteConfirm } from '../../../lib/hooks/useDeleteConfirm';
 
 interface Service {
     id: string;
@@ -37,6 +39,7 @@ export default function ServicesPage() {
     const [editingService, setEditingService] = useState<Service | null>(null);
     const [viewingService, setViewingService] = useState<Service | null>(null);
     const [formData, setFormData] = useState<Partial<Service>>({});
+    const deleteConfirm = useDeleteConfirm();
 
     const filteredServices = services.filter(service =>
         service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -130,10 +133,15 @@ export default function ServicesPage() {
         handleCloseModals();
     };
 
-    const handleDelete = (id: string) => {
-        if (confirm('Are you sure you want to delete this service?')) {
-            setServices(prev => prev.filter(s => s.id !== id));
-        }
+    const handleDelete = (id: string, title: string) => {
+        deleteConfirm.showDeleteConfirm({
+            title: 'Delete Service',
+            message: 'This action will permanently delete this service from the system. This cannot be undone.',
+            itemName: title,
+            onConfirm: () => {
+                setServices(prev => prev.filter(s => s.id !== id));
+            }
+        });
     };
 
     return (
@@ -207,7 +215,7 @@ export default function ServicesPage() {
                                             <button className="table-action-btn" onClick={() => handleOpenModal(service)} title="Edit">
                                                 <FaEdit />
                                             </button>
-                                            <button className="table-action-btn delete" onClick={() => handleDelete(service.id)} title="Delete">
+                                            <button className="table-action-btn delete" onClick={() => handleDelete(service.id, service.title)} title="Delete">
                                                 <FaTrash />
                                             </button>
                                         </div>
@@ -450,6 +458,9 @@ export default function ServicesPage() {
                     gap: 0.5rem;
                 }
             `}</style>
+
+            {/* Delete Confirmation Modal */}
+            <DeleteConfirmModal {...deleteConfirm.modalProps} />
         </AdminLayout>
     );
 }
