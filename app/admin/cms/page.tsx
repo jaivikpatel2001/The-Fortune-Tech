@@ -7,7 +7,7 @@ import DeleteConfirmModal from '../../../components/ui/DeleteConfirmModal';
 import { useDeleteConfirm } from '../../../lib/hooks/useDeleteConfirm';
 import cmsDataRaw from '../../../data/cms.json';
 
-const SummernoteEditor = lazy(() => import('../../../components/ui/SummernoteEditor'));
+const RichTextEditor = lazy(() => import('../../../components/ui/RichTextEditor'));
 
 interface CMSPage {
     id: string;
@@ -323,10 +323,9 @@ export default function CMSPage() {
                                 <div className="form-group" style={{ marginTop: '1.5rem' }}>
                                     <label className="form-label">Content *</label>
                                     <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)' }}>Loading editor...</div>}>
-                                        <SummernoteEditor
+                                        <RichTextEditor
                                             value={formData.content || ''}
-                                            onChange={(content) => setFormData(prev => ({ ...prev, content }))}
-                                            height={400}
+                                            onChange={(content: string) => setFormData(prev => ({ ...prev, content }))}
                                             placeholder="Enter page content here..."
                                         />
                                     </Suspense>
