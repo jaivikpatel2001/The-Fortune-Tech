@@ -8,6 +8,8 @@ import "../styles/auth.css";
 import "../styles/admin.css";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import SmoothScroll from "../components/layout/SmoothScroll";
+import FloatingButtons from "../components/layout/FloatingButtons";
 import { ThemeProvider } from "../contexts/ThemeContext";
 
 // Optimized font loading using next/font
@@ -60,6 +62,8 @@ export default function RootLayout({
             </head>
             <body className={inter.className}>
                 <ThemeProvider>
+                    <SmoothScroll />
+                    <FloatingButtons />
                     <Navbar />
                     <main style={{ minHeight: '100vh' }}>
                         {children}
