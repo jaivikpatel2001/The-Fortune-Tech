@@ -255,7 +255,7 @@ export default function ServicesPage() {
                                 </div>
                                 <div className="form-group">
                                     <label className="form-label">Pricing Hint</label>
-                                    <input name="pricingHint" className="form-input" value={formData.pricingHint || ''} onChange={handleInputChange} placeholder="e.g. Starting from ₹30,000" />
+                                    <input name="pricingHint" className="form-input" value={formData.pricingHint || ''} onChange={handleInputChange} placeholder="e.g. Custom Pricing" />
                                 </div>
                                 <div className="form-group">
                                     <label className="form-label">CTA Button Text</label>

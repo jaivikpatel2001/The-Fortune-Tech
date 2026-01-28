@@ -53,7 +53,7 @@
             "metaTitle": "Professional Web Development Services",
             "metaDescription": "Custom web development services using React and Next.js for scalable and high-performing websites."
         },
-        "pricingHint": "Starting from ₹30,000",
+        "pricingHint": "",
         "featured": true
     },
     {
@@ -106,7 +106,7 @@
             "metaTitle": "Mobile App Development Services",
             "metaDescription": "Cross-platform mobile app development using React Native and Flutter."
         },
-        "pricingHint": "Starting from ₹60,000",
+        "pricingHint": "",
         "featured": true
     },
     {
@@ -151,7 +151,7 @@
             "Web dashboards"
         ],
         "cta": "Design My Product",
-        "pricingHint": "Starting from ₹20,000",
+        "pricingHint": "",
         "featured": false
     },
     {
@@ -185,7 +185,7 @@
             "Future-proof systems"
         ],
         "cta": "Get Expert Advice",
-        "pricingHint": "Custom pricing",
+        "pricingHint": "",
         "featured": false
     },
     {
@@ -218,7 +218,7 @@
             "Faster releases"
         ],
         "cta": "Scale My Infrastructure",
-        "pricingHint": "Custom pricing",
+        "pricingHint": "",
         "featured": false
     },
     {
@@ -245,7 +245,7 @@
             "Stable performance"
         ],
         "cta": "Maintain My Product",
-        "pricingHint": "Monthly plans available",
+        "pricingHint": "",
         "featured": false
     }
 ]

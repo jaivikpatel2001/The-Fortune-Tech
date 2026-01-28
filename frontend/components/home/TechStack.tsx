@@ -40,12 +40,7 @@ const categoryColors: { [key: string]: { primary: string; glow: string } } = {
 };
 
 // Expertise level colors
-const expertiseColors: { [key: string]: string } = {
-  'Expert': '#22c55e',
-  'Advanced': '#8b5cf6',
-  'Intermediate': '#06b6d4',
-  'Beginner': '#f59e0b',
-};
+
 
 export default function TechStack() {
   const [activeTab, setActiveTab] = useState(0);
@@ -126,20 +121,9 @@ export default function TechStack() {
                       {/* Name */}
                       <span className="tech-card-name-new">{tech.name}</span>
 
-                      {/* Expertise Badge */}
-                      <span
-                        className="tech-expertise-badge"
-                        style={{
-                          '--expertise-color': expertiseColors[tech.expertiseLevel]
-                        } as React.CSSProperties}
-                      >
-                        {tech.expertiseLevel}
-                      </span>
 
-                      {/* Experience */}
-                      <span className="tech-experience">
-                        {tech.experienceYears}+ years
-                      </span>
+
+
 
                       {/* Use Cases (show on hover) */}
                       <div className="tech-use-cases">

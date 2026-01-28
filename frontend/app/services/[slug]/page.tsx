@@ -1,8 +1,7 @@
-'use client';
-
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import PageHeader from '../../../components/ui/PageHeader';
 import Button from '../../../components/ui/Button';
 import serviceData from '../../../data/services.json';
@@ -45,26 +44,39 @@ interface Service {
     };
 }
 
-export default function ServiceDetailPage() {
-    const params = useParams();
-    const slug = params.slug as string;
+// Generate Static Params for SSG
+export async function generateStaticParams() {
+    return serviceData.map((service) => ({
+        slug: service.slug,
+    }));
+}
 
+// Generate Metadata for SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const service = serviceData.find((s) => s.slug === slug);
+
+    if (!service) {
+        return {
+            title: 'Service Not Found',
+        };
+    }
+
+    return {
+        title: service.seo?.metaTitle || service.title,
+        description: service.seo?.metaDescription || service.description,
+    };
+}
+
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+
+    // Cast to Service[] as in the original file, though better typing would be preferred.
     const services = serviceData as unknown as Service[];
     const service = services.find((s) => s.slug === slug);
 
     if (!service) {
-        return (
-            <>
-                <PageHeader title="Service Not Found" subtitle="The service you're looking for doesn't exist." />
-                <section className="section">
-                    <div className="container" style={{ textAlign: 'center' }}>
-                        <Button href="/services" variant="primary">
-                            <FaArrowLeft /> Back to Services
-                        </Button>
-                    </div>
-                </section>
-            </>
-        );
+        notFound();
     }
 
     const Icon = getIcon(service.icon);

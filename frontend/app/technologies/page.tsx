@@ -157,11 +157,7 @@ export default function TechnologiesPage() {
                               {item.expertiseLevel}
                             </div>
 
-                            {/* Experience Years */}
-                            <div className="experience-years">
-                              <span className="years-number">{item.experienceYears}+</span>
-                              <span className="years-label">Years Experience</span>
-                            </div>
+
 
                             {/* Use Cases */}
                             <div className="use-cases-list">
@@ -201,13 +197,7 @@ export default function TechnologiesPage() {
               <div className="tech-stat-number-new">{expertCount}</div>
               <div className="tech-stat-label-new">Advanced Expertise</div>
             </div>
-            <div className="tech-stat-card-new">
-              <div className="tech-stat-icon">
-                <FaCloud />
-              </div>
-              <div className="tech-stat-number-new">{totalYears}+</div>
-              <div className="tech-stat-label-new">Years Max Experience</div>
-            </div>
+
             <div className="tech-stat-card-new">
               <div className="tech-stat-icon">
                 <FaCheckCircle />

@@ -1,8 +1,7 @@
-'use client';
-
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import PageHeader from '../../../components/ui/PageHeader';
 import Button from '../../../components/ui/Button';
 import portfolioData from '../../../data/portfolio.json';
@@ -41,6 +40,30 @@ interface Project {
     };
     thumbnail: string;
     featured: boolean;
+}
+
+// Generate Static Params for SSG
+export async function generateStaticParams() {
+    return portfolioData.map((project) => ({
+        slug: project.slug,
+    }));
+}
+
+// Generate Metadata for SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const project = portfolioData.find((p) => p.slug === slug);
+
+    if (!project) {
+        return {
+            title: 'Project Not Found',
+        };
+    }
+
+    return {
+        title: project.title,
+        description: project.description,
+    };
 }
 
 // Helper to get tech icon
@@ -83,26 +106,14 @@ const getStatusColor = (status: string) => {
     }
 };
 
-export default function PortfolioDetailPage() {
-    const params = useParams();
-    const slug = params.slug as string;
-
+export default async function PortfolioDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const project = portfolioData.find((p) => p.slug === slug) as Project | undefined;
 
     if (!project) {
-        return (
-            <>
-                <PageHeader title="Project Not Found" subtitle="The project you're looking for doesn't exist." />
-                <section className="section">
-                    <div className="container" style={{ textAlign: 'center' }}>
-                        <Button href="/portfolio" variant="primary">
-                            <FaArrowLeft /> Back to Portfolio
-                        </Button>
-                    </div>
-                </section>
-            </>
-        );
+        notFound();
     }
+
 
     // Get all tech items from techStack object
     const getAllTech = () => {

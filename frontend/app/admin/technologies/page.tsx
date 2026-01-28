@@ -178,7 +178,7 @@ export default function TechnologiesPage() {
                                                     {item.featured && <FaStar size={10} color="#f59e0b" title="Featured" />}
                                                 </div>
                                                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                                                    {item.expertiseLevel} • {item.experienceYears}y exp
+                                                    {item.expertiseLevel}
                                                 </div>
                                             </div>
                                         </div>
